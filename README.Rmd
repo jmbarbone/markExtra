@@ -1,0 +1,31 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# jordanExtra
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+jordanExtra contains some additional functions that did not feel like they were general enough to belong in [`jordan`](github.com/jmbarbone/jordan).
+
+
+
+## Installation
+
+You can install the development version of jordanExtra from  with:
+
+``` r
+devtools::isntall_github("jmbarbone/jordanExtra")
+```

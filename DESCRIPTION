@@ -1,0 +1,36 @@
+Package: jordanExtra
+Type: Package
+Title: Additional functions
+Version: 0.1.0
+Authors@R:
+    person(given   = "Jordan Mark",
+           family  = "Barbone",
+           role    = c("aut", "cph", "cre"),
+           email   = "jmbarbone@gmail.com",
+           comment = c(ORCID = "0000-0001-9788-3628"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Requires:
+    R (>= 3.6),
+    jordan
+Imports:
+    jordan
+Suggests:
+    dplyr,
+    furrr,
+    future,
+    openxlsx,
+    pROC,
+    rlang,
+    scales,
+    spelling,
+    testthat (>= 3.0.0)
+Remotes:
+  jmbarbone/jordan
+RoxygenNote: 7.1.1
+Config/testthat/edition: 3
+Config/testthat/parallel: false
