@@ -23,7 +23,7 @@ proportion.default <- function(x, ...) {
     x <- factor(x, levels = unique(as.character(x)))
   }
 
-  vap_dbl(split(x, x), length, .nm = TRUE) / length(x)
+  jordan::vap_dbl(split(x, x), length, .nm = TRUE) / length(x)
 }
 
 #' @export
@@ -36,7 +36,7 @@ proportion.data.frame <- function(x, col, ...) {
             "Multiple matches found" = sum(is_in) == 1L)
 
   props <- proportion.default(x[[col]])
-  vector2df(props, col, "prop")
+  jordan::vector2df(props, col, "prop")
 }
 
 
@@ -44,16 +44,28 @@ proportion.data.frame <- function(x, col, ...) {
 #'
 #' Computes Fisher's method for combined probabilities
 #'
+#' @details
+#' Values greater than 1 and less than 0 are removed from the calculation.
+#'   Values of 0 are red
+#'
 #' @param x A vector of p-values.
+#' @param zeros Logical, if `TRUE` will use zeros in calculation, otherwise
+#'   recoded as `.Machine$double.xmin`.  This still will produce a very small
+#'   result but will be less likely to produce `0`
 #' @export
 
-fishers_method <- function(x) {
-  valid <- x[x <= 1 & x >= 0]
-  ps <- valid[valid != 0]
-  ps[ps == 0] <- min(valid)
-  stats::pchisq((-2) * sum(log(ps)),
-                df = 2 * length(ps),
-                lower.tail = FALSE)
+fishers_method <- function(x, zeros = FALSE) {
+  x <- x[x <= 1 & x >= 0]
+
+  if (!zeros) {
+    x[x == 0] <- .Machine$double.xmin
+  }
+
+  stats::pchisq(
+    (-2) * sum(log(x)),
+    df = 2 * length(x),
+    lower.tail = FALSE
+  )
 }
 
 #' Inter Quartile Ranges
@@ -136,7 +148,6 @@ sd_pooled <- function(ns, ses, max = FALSE) {
 #' @param x A vector or data.frame
 #' @param na.rm Passed to `stats::sd()`.
 #' @return A vector
-#' @importFrom stats sd
 #' @export
 
 sterr <- function(x, na.rm = F)
@@ -146,10 +157,10 @@ sterr <- function(x, na.rm = F)
 
 sterr.numeric <- function(x, na.rm = F) {
   n <- length(x)
-  sd <- sd(x, na.rm = na.rm)
+  sd <- stats::sd(x, na.rm = na.rm)
   sd / sqrt(n)
 }
 
 sterr.data.frame <- function(x, na.rm = F) {
-  vapply(x, sterr, double(1), na.rm = na.rm)
+  jordan::vap_dbl(x, sterr, na.rm = na.rm)
 }
