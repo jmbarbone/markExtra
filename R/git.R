@@ -13,7 +13,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test) 
 
   stopifnot(
     "No git directory detected" = dir.exists(jordan::file_path(x, ".git")),
-    "No .Rproj found in project_dir" = file.exists(jordan::file_path(x, ".Rproj"))
+    "No .Rproj found in project_dir" = file.exists(paste0(x, ".Rproj"))
     )
 
   temp_dir <- jordan::file_path(
