@@ -1,6 +1,6 @@
 Package: jordanExtra
 Type: Package
-Title: Additional functions
+Title: Extra functions for jordan
 Version: 0.1.0
 Authors@R:
     person(given   = "Jordan Mark",
@@ -8,9 +8,8 @@ Authors@R:
            role    = c("aut", "cph", "cre"),
            email   = "jmbarbone@gmail.com",
            comment = c(ORCID = "0000-0001-9788-3628"))
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Maintainer: Jordan Mark Barbone <jmbarbone@gmail.com>
+Description: Extra functions for the jordan package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -30,7 +29,8 @@ Suggests:
     spelling,
     testthat (>= 3.0.0)
 Remotes:
-  jmbarbone/jordan
+  jmbarbone/jordan,
+  jmbarbone/AlignAssign@tilde
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: false
