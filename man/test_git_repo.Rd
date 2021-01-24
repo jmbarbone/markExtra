@@ -4,7 +4,13 @@
 \alias{test_git_repo}
 \title{Test a git repository}
 \usage{
-test_git_repo(x, ..., branch = "master", test_fun = devtools::test)
+test_git_repo(
+  x,
+  ...,
+  branch = "master",
+  test_fun = devtools::test,
+  options = NULL
+)
 }
 \arguments{
 \item{x}{A project directory}
