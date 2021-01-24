@@ -63,7 +63,7 @@ print.jordan_roc_thres <- function(x, ...) {
 }
 
 subset_rownames <- function(x, y) {
-  rn <- rownames(x)
+  rn <- attr(x, "row.names")
   stopifnot("Object `x` has no rownames" = !is.null(rn))
   x[rn == y, ]
 }
@@ -85,16 +85,15 @@ subset_rownames <- function(x, y) {
 #' @param boots Number of bootstrap replications to perform; if < 2L will not
 #'   perform any
 #'
-#' @importFrom grDevices rgb
-#'
 #' @export
 #' @examples
-#' x <- pROC::aSAH
-#' mod <- pROC::roc(x$outcome, x$s100b, levels = c("Good", "Poor"))
-#' pROC_quick_plot(mod)
-#'
+#' if (require_namespace("pROC")) {
+#'   x <- pROC::aSAH
+#'   mod <- pROC::roc(x$outcome, x$s100b, levels = c("Good", "Poor"))
+#'   pROC_quick_plot(mod)
 #' \dontrun{
-#' pROC_quick_plot(mod, boots = 100)
+#'   pROC_quick_plot(mod, boots = 100)
+#' }
 #' }
 
 pROC_quick_plot <- function(mod, thres_method = c("youden", "closest.topleft"), col = "blue", ..., boots = 0L) {
@@ -117,7 +116,7 @@ pROC_quick_plot <- function(mod, thres_method = c("youden", "closest.topleft"), 
   if (boots > 1L) {
     cis <- pROC_ci_sp_roc(mod, boots = boots)
     # Defaults to a grey
-    ci_col <- rgb(red = 0, green = 0, blue = 0, alpha = 0.1)
+    ci_col <- grDevices::rgb(red = 0, green = 0, blue = 0, alpha = 0.1)
     f <- "pROC" %colons% "plot.ci.sp"
     f(
       cis,
