@@ -8,12 +8,18 @@
 #'
 #' @export
 
-test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test) {
+test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, options = NULL) {
+  # browser()
   require_namespace("devtools")
+  op <- options()
+  on.exit(options(op), add = TRUE)
+  options(options)
+
+  x <- norm_path(x, check = TRUE)
 
   stopifnot(
-    "No git directory detected" = dir.exists(jordan::file_path(x, ".git")),
-    "No .Rproj found in project_dir" = file.exists(jordan::file_path(x, ".Rproj"))
+    "No git directory detected" = has_git(x),
+    "No .Rproj found in project_dir" = has_rproj(x)
     )
 
   temp_dir <- jordan::file_path(
@@ -28,22 +34,38 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test) 
     unlink(temp_dir, recursive = TRUE, force = TRUE)
   }
 
-  cmd <- sprintf(
+  args <- sprintf(
     " clone --branch %s --depth=1 %s %s",
     branch,
     get_project_git_url(x),
     temp_dir
   )
 
-  system2("git", cmd)
+  system2("git", args)
 
   FUN <- match.fun(test_fun)
   FUN(temp_dir, ...)
 }
 
+# TODO Maybe add a FAIL argument for jordan::norm_path?
+# Passed to normalizePath(., mustWork = fail)
+# norm_path(x, check = fail, remove = check, fail = FALSE)
+
 get_project_git_url <- function(path) {
-  wd <- getwd()
-  on.exit(setwd(wd), add = TRUE)
-  setwd(path)
-  system2("git", "remote get-url origin", stdout = TRUE)
+  git_folder <- tryCatch(
+    file_path(path, ".git", check = TRUE),
+    warning = function(e) {
+      stop(e$message, call. = FALSE)
+    }
+  )
+  args <- sprintf(' --git-dir %s remote get-url origin', git_folder)
+  system2("git", args, stdout = TRUE)
+}
+
+has_git <- function(x) {
+  dir.exists(jordan::file_path(x, ".git"))
+}
+
+has_rproj <- function(x) {
+  file.exists(file_path(x, paste0(basename(x), ".Rproj")))
 }

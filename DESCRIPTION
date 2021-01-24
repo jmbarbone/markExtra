@@ -22,15 +22,19 @@ Suggests:
     dplyr,
     furrr,
     future,
+    knitr,
     openxlsx,
     pROC,
     rlang,
+    rmarkdown,
     scales,
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    xfun
 Remotes:
-  jmbarbone/jordan,
-  jmbarbone/AlignAssign@tilde
+    jmbarbone/jordan,
+    jmbarbone/AlignAssign@tilde
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: false
+VignetteBuilder: knitr
