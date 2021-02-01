@@ -29,7 +29,6 @@ pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
     }
   )
 
-  un <- unclass(cis)
   thres <- mod$thresholds[w]
   ci_sp <- subset_rownames(cis$sensitivity, thres)
   ci_se <- subset_rownames(cis$specificity, thres)
@@ -63,7 +62,8 @@ print.jordan_roc_thres <- function(x, ...) {
 }
 
 subset_rownames <- function(x, y) {
-  rn <- attr(x, "row.names")
+  # Try for actual values, then use generic rownames()
+  rn <- attr(x, "row.names") %||% rownames(x)
   stopifnot("Object `x` has no rownames" = !is.null(rn))
   x[rn == y, ]
 }
