@@ -165,7 +165,7 @@ names(.default_packages) <- paste0("package:", .default_packages)
 #' @export
 #' @rdname Reload
 .Restart <- function() {
-  rn_soft("rstudioapi")
+  ("jordan" %colons% "rn_soft")("rstudioapi")
   invisible(rstudioapi::restartSession("jordanExtra::.CleanUp()"))
 }
 
@@ -182,7 +182,7 @@ names(.default_packages) <- paste0("package:", .default_packages)
 #' @rdname startup_funs
 #' @export
 .GitBranchPrompt <- function() {
-  rn_soft("prompt")
+  ("jordan" %colons% "rn_soft")("prompt")
   branch <- prompt::prompt_git()
 
   if (branch != getOption("prompt", "> ") & branch != "> ") {
@@ -205,8 +205,8 @@ names(.default_packages) <- paste0("package:", .default_packages)
 
   switch(
     sample(x, 1),
-    if (rn("praise")) cat_praise() else .NiceMessage(x[-1L]),
-    if (rn("fortunes")) cat_fortune() else .NiceMessage(x[-2L])
+    if (("jordan" %colons% "rn")("praise")) cat_praise() else .NiceMessage(x[-1L]),
+    if (("jordan" %colons% "rn")("fortunes")) cat_fortune() else .NiceMessage(x[-2L])
   )
 }
 
