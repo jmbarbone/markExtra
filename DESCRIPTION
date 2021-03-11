@@ -13,23 +13,29 @@ Description: Extra functions for the jordan package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Requires:
+Depends:
     R (>= 3.6),
-    jordan
+    jordan (>= 0.1.1)
 Imports:
-    jordan
-Suggests:
+    crayon,
     dplyr,
+    fortunes,
     furrr,
     future,
     knitr,
+    magrittr,
+    methods,
     openxlsx,
     pROC,
+    praise,
+    prompt,
     rlang,
     rmarkdown,
+    rstudioapi,
     scales,
     spelling,
-    testthat (>= 3.0.0),
+    testthat (>= 3.0.0)
+Suggests:
     xfun
 Remotes:
     jmbarbone/jordan,

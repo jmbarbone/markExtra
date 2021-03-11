@@ -6,10 +6,6 @@
 # Other option setting
 # These should be relatively safe and not case any differences in processes
 
-# You can turn off with Sys.setenv(JORDAN_RPROFILE = FALSE)
-
-.rprofile <- new.env()
-
 .rprofile$op <- list(
   tidyverse.quiet = TRUE,
   devtools.name = "Jordan Mark Barbone",
@@ -23,29 +19,29 @@
     comment = c(ORCID = "0000-0001-9788-3628")
   ),
 
-  # if FALSE will not activate ~/.Rprofile
-  jordan.rprofile = TRUE,
+  usethis.description = list(
+    `Authors@R` = 'person("Jordan Mark", "Barbone", email = "jmbarbone@gmail.com", role = c("aut", "cre"),
+                          comment = c(ORCID = "0000-0001-9788-3628"))',
+    License = "MIT + file LICENSE",
+    Language =  "en-US"
+  ),
 
-  # if TRUE will remove the .rprofile object
-  jordan_remove_.rprofile = FALSE
+  # if FALSE will not activate ~/.Rprofile
+  jordan.rprofile = TRUE
 )
 
-options(.rprofile$op[!names(.rprofile$op) %in% names(options())])
-
-.rprofile$file <- system.file(".Rprofile", package = "jordanExtra")
-.rprofile$exists <- .rprofile$file != ""
-.rprofile$local <- tryCatch(readLines("~/.Rprofile", ok = FALSE),
-                            error = function(e) NULL)
-
 # Load my functions
-if (interactive() & .rprofile$op$jordan.rprofile) {
+if (interactive() & isTRUE(.rprofile$op$jordan.rprofile)) {
   cat(crayon::cyan("Sourcing ~/.Rprofile...\n"))
   jordan::.LoadFunctionsFromJordan()
-  .RunDefaultFunctionsFromJordan()
-  .git_branch_prompt()
-  cat(crayon::cyan("... Done!\n"))
+  .NiceMessage()
+  .LoadPipe()
+  .GitBranchPrompt()
 }
 
-if (.rprofile$op$jordan_remove_.rprofile) {
-  remove(.rprofile)
-}
+options(.rprofile$op[!names(.rprofile$op) %in% names(options())])
+.rprofile$file <- system.file(".Rprofile", package = "jordanExtra")
+.rprofile$exists <- .rprofile$file != ""
+.rprofile$local <- tryCatch(readLines("~/.Rprofile", ok = FALSE), error = function(e) NULL)
+
+remove(.rprofile)
