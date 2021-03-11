@@ -3,7 +3,7 @@
 #' Make a password and send to the clipboard with [jordan::write_clipboard()]
 #'
 #' @param n The character length desired (default: `16L`)
-#' @param specials A single string of characters other than all letterrs (from
+#' @param specials A single string of characters other than all letters (from
 #'   `LETTERS` and `letters`) and numbers (`0:9`)
 #' @param silent if `FALSE` will call `cat()` on the password
 #'
