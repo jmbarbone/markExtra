@@ -5,16 +5,19 @@
 \alias{startup_funs}
 \alias{.LoadFunctionsFromJordan}
 \alias{.ResetOptions}
+\alias{.RemoveAll}
 \alias{.GitBranchPrompt}
 \alias{.LoadPipe}
 \title{Start up functions}
 \format{
-An object of class \code{character} of length 8.
+An object of class \code{character} of length 9.
 }
 \usage{
 .LoadFunctionsFromJordan(env = parent.frame())
 
 .ResetOptions(keep_prompt = TRUE)
+
+.RemoveAll(env = parent.frame())
 
 startup_funs
 

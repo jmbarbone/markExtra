@@ -7,7 +7,7 @@
 \alias{.CleanUp}
 \title{Reload}
 \usage{
-.Reload(remove_objects = TRUE, loud = FALSE)
+.Reload(remove_objects = TRUE, loud = FALSE, env = parent.frame())
 
 .Restart()
 

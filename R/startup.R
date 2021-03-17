@@ -57,6 +57,11 @@ NULL
   invisible(NULL)
 }
 
+#' @export
+#' @rdname startup_funs
+.RemoveAll <- function(env = parent.frame()) {
+  rm(list = ls(all.names = TRUE, envir = env, sorted = FALSE), envir = env)
+}
 
 #' @export
 #' @rdname startup_funs
@@ -69,6 +74,7 @@ startup_funs <- c(
   '.NiceMessage',
   '.LoadPipe',
   '.CharacterIndex',
+  '.RemoveAll',
   NULL
 )
 
@@ -123,10 +129,7 @@ startup_funs <- c(
     tryCatch(
       detach(a, character.only = TRUE),
       error = function(e) {
-        warning("`", a, "` was not found `detach()`")
-      },
-      finally = function() {
-        invisible(NULL)
+        warning("`", a, "` was not found in `detach()`")
       }
     )
   }
@@ -146,9 +149,9 @@ names(.default_packages) <- paste0("package:", .default_packages)
 #' @export
 #' @family startup_utils
 #' @name Reload
-.Reload <- function(remove_objects = TRUE, loud = FALSE) {
+.Reload <- function(remove_objects = TRUE, loud = FALSE, env = parent.frame()) {
   cat(crayon::cyan("\nPreparing Restart ...\n"))
-  objs <- ls(envir = .GlobalEnv, all.names = TRUE)
+  objs <- ls(envir = .GlobalEnv, all.names = TRUE, sorted = FALSE)
 
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
@@ -166,13 +169,14 @@ names(.default_packages) <- paste0("package:", .default_packages)
 #' @rdname Reload
 .Restart <- function() {
   ("jordan" %colons% "rn_soft")("rstudioapi")
+  on.exit(unloadNamespace("jordanExtra"), add = TRUE)
+  .RemoveAll()
   invisible(rstudioapi::restartSession("jordanExtra::.CleanUp()"))
 }
 
 #' @export
 #' @rdname Reload
 .CleanUp <- function() {
-  # Protects against multiple iterations
   while (sum(inds <- search() %in% "jordan:rprofile") > 1) {
     # Remove last first
     detach(pos = max(which(inds)))
