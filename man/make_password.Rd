@@ -9,7 +9,7 @@ make_password(n = 16L, specials = "!@#$\%^&*_+-=?", silent = TRUE)
 \arguments{
 \item{n}{The character length desired (default: `16L`)}
 
-\item{specials}{A single string of characters other than all letterrs (from
+\item{specials}{A single string of characters other than all letters (from
 `LETTERS` and `letters`) and numbers (`0:9`)}
 
 \item{silent}{if `FALSE` will call `cat()` on the password}
