@@ -13,13 +13,10 @@ percentile_rank(x)
 A percentile rank between 0 and 100
 }
 \description{
-Computes a percentile rank for each score in a set.
 The bounds of a percentile rank are > 0 and < 100.
+
 A percentile rank here is the proportion of scores that are less than the
   current score.
-}
-\details{
-This is not a very fast formula, however it is correct.
 
 \deqn{PR = (c_L + 0.5 f_i) / N * 100}
 
@@ -29,7 +26,11 @@ Where
 
   \eqn{f_i} is the frequency of the score of interest
 }
+\details{
+Computes a percentile rank for each score in a set.
+}
 \examples{
+percentile_rank(0:9)
 x <- c(1, 1, 2, 5, 7, 7, 8, 10)
 percentile_rank(x)
 \dontrun{

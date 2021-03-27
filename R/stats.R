@@ -1,44 +1,3 @@
-#' Proportions
-#'
-#' Calculates a proportion from a vector or data.frame/matrix.
-#'
-#' @param x A data.frame or a vector.
-#' @param ... Additional arguments to be passed to methods.
-#' @param col A character string of the column name which holds the groups
-#'
-#' @examples
-#' proportion(iris, "Species")
-#' proportion(iris$Species)
-#'
-#' @export
-
-proportion <- function(x, ...) {
-  UseMethod("proportion", x)
-}
-
-#' @export
-#' @rdname proportion
-proportion.default <- function(x, ...) {
-  if (!inherits(x, "factor")) {
-    x <- factor(x, levels = unique(as.character(x)))
-  }
-
-  jordan::vap_dbl(split(x, x), length, .nm = TRUE) / length(x)
-}
-
-#' @export
-#' @rdname proportion
-proportion.data.frame <- function(x, col, ...) {
-  cn <- colnames(x)
-  is_in <- col %in% cn
-
-  stopifnot("Column name not found" = any(is_in),
-            "Multiple matches found" = sum(is_in) == 1L)
-
-  props <- proportion.default(x[[col]])
-  jordan::vector2df(props, col, "prop")
-}
-
 
 #' Fisher's method for combined probabilities
 #'
@@ -87,12 +46,12 @@ iqrs <- function(x, na.rm = FALSE) {
 #' Percentile rank
 #'
 #' Computes a percentile rank for each score in a set.
+#'
+#' @description
 #' The bounds of a percentile rank are > 0 and < 100.
+#'
 #' A percentile rank here is the proportion of scores that are less than the
 #'   current score.
-#'
-#' @details
-#' This is not a very fast formula, however it is correct.
 #'
 #' \deqn{PR = (c_L + 0.5 f_i) / N * 100}
 #'
@@ -109,16 +68,17 @@ iqrs <- function(x, na.rm = FALSE) {
 #' @return A percentile rank between 0 and 100
 #'
 #' @examples
+#' percentile_rank(0:9)
 #' x <- c(1, 1, 2, 5, 7, 7, 8, 10)
 #' percentile_rank(x)
 #' \dontrun{
 #' dplyr::percent_rank(x) * 100
 #' }
-
 percentile_rank <- function(x) {
-  p <- proportion(x)
-  (cumsum(p) - p * .5)[match(x, sort.int(unique.default(x)))] * 100
+  p <- jordan::props(x)
+  (cumsum(p) - p * 0.5)[match(x, sort.int(unique.default(x)))] * 100
 }
+
 
 #' Pooled standard deviation
 #'
