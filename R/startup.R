@@ -120,8 +120,10 @@ startup_funs <- c(
   attached <- setdiff(attached, rev(names(.default_packages)))
 
   for (a in attached) {
-    tryCatch(
-      detach(a, character.only = TRUE),
+    tryCatch({
+      unloadNamespace(a)
+      detach(a, character.only = TRUE)
+    },
       error = function(e) {
         warning("`", a, "` was not found `detach()`")
       },
@@ -153,7 +155,7 @@ names(.default_packages) <- paste0("package:", .default_packages)
   if (remove_objects) {
     if (loud & length(objs) > 0L) {
       message("Removing all objects in the Global Environment:\n",
-              collapse0(objs, sep = " ... "))
+        collapse0(objs, sep = " ... "))
     }
     rm(list = objs, envir = .GlobalEnv)
   }
