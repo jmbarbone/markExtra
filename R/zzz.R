@@ -1,12 +1,12 @@
 
+.onAttach <- function(pkgname, libpath) {
+  invisible(NULL)
+}
+
 .onUnload <- function(libpath) {
-  if ("jordan:rprofile" %in% search()) {
-    detach("jordan:rprofile", character.only = TRUE)
-  }
+  invisible(NULL)
 }
 
 .onDetach <- function(libpath) {
-  if ("jordan:rprofile" %in% search()) {
-    detach("jordan:rprofile", character.only = TRUE)
-  }
+  invisible(NULL)
 }
