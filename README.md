@@ -15,5 +15,5 @@ they were general enough to belong in
 You can install the development version of jordanExtra from with:
 
 ``` r
-devtools::isntall_github("jmbarbone/jordanExtra")
+remotes::install_github("jmbarbone/jordanExtra")
 ```

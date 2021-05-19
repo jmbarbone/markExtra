@@ -27,5 +27,5 @@ jordanExtra contains some additional functions that did not feel like they were 
 You can install the development version of jordanExtra from  with:
 
 ``` r
-devtools::isntall_github("jmbarbone/jordanExtra")
+remotes::install_github("jmbarbone/jordanExtra")
 ```
