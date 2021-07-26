@@ -1,4 +1,4 @@
 library(testthat)
-library(jordanExtra)
+library(markExtra)
 
-test_check("jordanExtra")
+test_check("markExtra")

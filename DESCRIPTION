@@ -1,6 +1,6 @@
-Package: jordanExtra
+Package: markExtra
 Type: Package
-Title: Extra functions for jordan
+Title: Extra Functions for the mark Package
 Version: 0.1.0
 Authors@R:
     person(given   = "Jordan Mark",
@@ -9,14 +9,14 @@ Authors@R:
            email   = "jmbarbone@gmail.com",
            comment = c(ORCID = "0000-0001-9788-3628"))
 Maintainer: Jordan Mark Barbone <jmbarbone@gmail.com>
-Description: Extra functions for the jordan package.
+Description: Extra functions for the mark package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.6)
 Imports:
-    jordan (>= 0.1.1),
+    mark (>= 0.1.1),
     crayon,
     dplyr,
     fortunes,
@@ -38,8 +38,8 @@ Imports:
 Suggests:
     xfun
 Remotes:
-    jmbarbone/jordan,
-    jmbarbone/AlignAssign@tilde
+    jmbarbone/AlignAssign@tilde,
+    jmbarbone/spelling@45-alnumeric-hyphenated
 RoxygenNote: 7.1.1
 Config/testthat/edition: 3
 Config/testthat/parallel: false

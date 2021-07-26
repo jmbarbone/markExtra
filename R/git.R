@@ -22,7 +22,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
     "No .Rproj found in project_dir" = has_rproj(x)
     )
 
-  temp_dir <- jordan::file_path(
+  temp_dir <- mark::file_path(
     tempdir(check = TRUE),
     "test-git-repo",
     basename(x)
@@ -47,7 +47,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
   FUN(temp_dir, ...)
 }
 
-# TODO Maybe add a FAIL argument for jordan::norm_path?
+# TODO Maybe add a FAIL argument for mark::norm_path?
 # Passed to normalizePath(., mustWork = fail)
 # norm_path(x, check = fail, remove = check, fail = FALSE)
 
@@ -63,7 +63,7 @@ get_project_git_url <- function(path) {
 }
 
 has_git <- function(x) {
-  dir.exists(jordan::file_path(x, ".git"))
+  dir.exists(mark::file_path(x, ".git"))
 }
 
 has_rproj <- function(x) {

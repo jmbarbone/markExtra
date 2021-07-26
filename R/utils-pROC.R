@@ -36,7 +36,7 @@ pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
   stopifnot(length(ci_sp) == 3L & length(ci_sp) == 3L)
 
   structure(thres,
-            class = c("jordan_roc_thres", "numeric"),
+            class = c("mark_roc_thres", "numeric"),
             typeof = "double",
             method = method,
             ci_sp = ci_sp,
@@ -45,7 +45,7 @@ pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
 }
 
 #' @export
-print.jordan_roc_thres <- function(x, ...) {
+print.mark_roc_thres <- function(x, ...) {
   a <- attributes(x)
   dig <- getOption("digits", 7L)
   se <- round(a$ci_se, dig)

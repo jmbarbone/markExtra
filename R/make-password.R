@@ -1,6 +1,6 @@
 #' Generate a random password
 #'
-#' Make a password and send to the clipboard with [jordan::write_clipboard()]
+#' Make a password and send to the clipboard with [mark::write_clipboard()]
 #'
 #' @param n The character length desired (default: `16L`)
 #' @param specials A single string of characters other than all letters (from

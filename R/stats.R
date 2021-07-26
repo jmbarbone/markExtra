@@ -75,7 +75,7 @@ iqrs <- function(x, na.rm = FALSE) {
 #' dplyr::percent_rank(x) * 100
 #' }
 percentile_rank <- function(x) {
-  p <- jordan::props(x)
+  p <- mark::props(x)
   (cumsum(p) - p * 0.5)[match(x, sort.int(unique.default(x)))] * 100
 }
 
@@ -122,5 +122,5 @@ sterr.numeric <- function(x, na.rm = F) {
 }
 
 sterr.data.frame <- function(x, na.rm = F) {
-  jordan::vap_dbl(x, sterr, na.rm = na.rm)
+  mark::vap_dbl(x, sterr, na.rm = na.rm)
 }
