@@ -1,19 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# jordanExtra
+# markExtra
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-jordanExtra contains some additional functions that did not feel like
-they were general enough to belong in
-[`jordan`](github.com/jmbarbone/jordan).
+markExtra contains some additional functions that did not feel like they
+were general enough to belong in [`mark`](github.com/jmbarbone/mark).
 
 ## Installation
 
-You can install the development version of jordanExtra from with:
+You can install the development version of markExtra from with:
 
 ``` r
-remotes::install_github("jmbarbone/jordanExtra")
+remotes::install_github("jmbarbone/markExtra")
 ```
