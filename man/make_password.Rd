@@ -18,5 +18,5 @@ make_password(n = 16L, specials = "!@#$\%^&*_+-=?", silent = TRUE)
 `NULL`, invisible
 }
 \description{
-Make a password and send to the clipboard with [jordan::write_clipboard()]
+Make a password and send to the clipboard with [mark::write_clipboard()]
 }
