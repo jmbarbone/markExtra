@@ -31,9 +31,7 @@ Computes a percentile rank for each score in a set.
 }
 \examples{
 percentile_rank(0:9)
-x <- c(1, 1, 2, 5, 7, 7, 8, 10)
+x <- c(1, 1, 2, 5, 7, NA_integer_, 7, 10)
 percentile_rank(x)
-\dontrun{
 dplyr::percent_rank(x) * 100
-}
 }
