@@ -2,40 +2,40 @@
 % Please edit documentation in R/change-from-reference.R
 \name{reference_change}
 \alias{reference_change}
-\alias{change_from_visit}
-\alias{pchange_from_visit}
-\alias{prop_from_visit}
+\alias{change_from_reference}
+\alias{pchange_from_reference}
+\alias{prop_from_reference}
 \alias{get_reference_value}
-\alias{add_change_from_visit}
-\alias{add_pchange_from_visit}
+\alias{add_change_from_reference}
+\alias{add_pchange_from_reference}
 \alias{add_change_from_reference_wide}
 \title{Calculate change from a visit}
 \usage{
-change_from_visit(x, visits, reference = "Baseline")
+change_from_reference(x, reference, point = "Baseline")
 
-pchange_from_visit(x, visits, reference = "Baseline")
+pchange_from_reference(x, reference, point = "Baseline")
 
-prop_from_visit(x, visits, reference = "Baseline")
+prop_from_reference(x, reference, point = "Baseline")
 
-get_reference_value(x, visits, reference = "Baseline")
+get_reference_value(x, reference, point = "Baseline")
 
-add_change_from_visit(
+add_change_from_reference(
   .data,
-  value = "value",
-  visits = "VisitName",
-  reference = "Baseline"
+  values = "value",
+  references = "VisitName",
+  point = "Baseline"
 )
 
-add_pchange_from_visit(
+add_pchange_from_reference(
   .data,
-  value = "value",
-  visits = "VisitName",
-  reference = "Baseline"
+  values = "value",
+  references = "VisitName",
+  point = "Baseline"
 )
 
 add_change_from_reference_wide(
   .data,
-  reference = "Baseline",
+  point = "Baseline",
   cols,
   percent = FALSE,
   name = c("CFB", "\%CFB"),
@@ -47,15 +47,15 @@ add_change_from_reference_wide(
 \arguments{
 \item{x}{A vector of values or character name of column}
 
-\item{visits}{A vector of visits or character name of column}
+\item{reference}{A vector of references (i.e., such as visit names) or
+character name of column}
 
-\item{reference}{A scalar character of visit (default: `"Baseline"`)}
+\item{point}{A scalar character of the reference (i.e., visit) (default:
+`"Baseline"`)}
 
-\item{.data}{A data.frame}
+\item{.data}{A `data.frame`}
 
-\item{value}{The name of the value column}
-
-\item{cols}{A vector of column names to compute differences from}
+\item{references}{A vector of column names to compute differences from}
 
 \item{percent}{Logical, if `TRUE` will also calculate percent change}
 
@@ -64,32 +64,35 @@ element will be used if `percent = TRUE`.}
 
 \item{sep}{A character separation for the new column names}
 
-\item{rearrange}{A method to change the arrangement of the data.frame columns
-with the new columns added: `end` will do nothing and append columns at
-very end; `immediate` will append columns immediate after each `col`;
-`after` will append columns after the last `col` entered.}
+\item{rearrange}{A method to change the arrangement of the `data.frame`
+columns with the new columns added: `end` will do nothing and append
+columns at very end; `immediate` will append columns immediate after each
+`col`; `after` will append columns after the last `col` entered.}
 
 \item{collate}{For `percent = TRUE` and `rearrange = "after"`; will show the
 change from reference for all `cols` then the percent change.}
+
+\item{value}{The name of the value column}
 }
 \description{
 Calculate change from visit or proportion of change from a visit
 }
 \details{
-These functions are vectorised so t/hey may be used inside a (grouped) data
-  frame to calculate the change scores.
+These functions are vectorised so they may be used inside a
+  (grouped) `data.frame` to calculate the change values.
 
-`pchange_from_visit()` calculations a proportion of change from baseline, not
-  a percentage, so it may need to be multiplied by `100` to achieve that.
+  `pchange_from_reference()` calculations a proportion of change from the
+  reference, not a percentage, so it may need to be multiplied by `100` to
+  achieve that.
 
-`prop_from_visit()` is just an alias for `pchange_from_visit()`.
+  `prop_from_reference()` is just an alias for `pchange_from_reference()`.
 
-`get_reference_value()` returns the reference score but as a vector the same
-  length as `x`.  This may be useful for creating a new column based on the
-  reference value in a dataframe.
+  `get_reference_value()` returns the reference value but as a vector the
+  same length as `x`.  This may be useful for creating a new column based on
+  the reference value in a `data.frame`.
 
-`add_change_from_visit()` and `add_pchange_from_visit()` will take a
-  data.frame and append reference change values.
+  `add_change_from_reference()` and `add_pchange_from_reference()` will take
+  a `data.frame` and append reference change values.
 }
 \examples{
 visits <- c("Screening", "Baseline", "Week 2", "Week 4", "Week 6")
@@ -98,15 +101,15 @@ values <- c(3, 2, 3, 2, 4)
 df <- data.frame(
   values      = values,
   visits      = visits,
-  cfb         = change_from_visit(values, visits, "Baseline"),
-  pcfb        = pchange_from_visit(values, visits, "Baseline"),
-  p_screening = pchange_from_visit(values, visits, "Week 2"),
+  cfb         = change_from_reference(values, visits, "Baseline"),
+  pcfb        = pchange_from_reference(values, visits, "Baseline"),
+  p_screening = pchange_from_reference(values, visits, "Week 2"),
   bl_value    = get_reference_value(values, visits)
 )
 
 df
-add_change_from_visit(df, "values", "visits")
-add_pchange_from_visit(df, "values", "visits")
+add_change_from_reference(df, "values", "visits")
+add_pchange_from_reference(df, "values", "visits")
 
 # Appending to a wide data.frame
 

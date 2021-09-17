@@ -2,36 +2,38 @@
 #'
 #' Calculate change from visit or proportion of change from a visit
 #'
-#' @details
-#' These functions are vectorised so t/hey may be used inside a (grouped) data
-#'   frame to calculate the change scores.
+#' @details These functions are vectorised so they may be used inside a
+#'   (grouped) `data.frame` to calculate the change values.
 #'
-#' `pchange_from_visit()` calculations a proportion of change from baseline, not
-#'   a percentage, so it may need to be multiplied by `100` to achieve that.
+#'   `pchange_from_reference()` calculations a proportion of change from the
+#'   reference, not a percentage, so it may need to be multiplied by `100` to
+#'   achieve that.
 #'
-#' `prop_from_visit()` is just an alias for `pchange_from_visit()`.
+#'   `prop_from_reference()` is just an alias for `pchange_from_reference()`.
 #'
-#' `get_reference_value()` returns the reference score but as a vector the same
-#'   length as `x`.  This may be useful for creating a new column based on the
-#'   reference value in a dataframe.
+#'   `get_reference_value()` returns the reference value but as a vector the
+#'   same length as `x`.  This may be useful for creating a new column based on
+#'   the reference value in a `data.frame`.
 #'
-#' `add_change_from_visit()` and `add_pchange_from_visit()` will take a
-#'   data.frame and append reference change values.
+#'   `add_change_from_reference()` and `add_pchange_from_reference()` will take
+#'   a `data.frame` and append reference change values.
 #'
-#' @param .data A data.frame
+#' @param .data A `data.frame`
 #' @param x A vector of values or character name of column
 #' @param value The name of the value column
-#' @param visits A vector of visits or character name of column
-#' @param reference A scalar character of visit (default: `"Baseline"`)
-#' @param cols A vector of column names to compute differences from
+#' @param reference A vector of references (i.e., such as visit names) or
+#'   character name of column
+#' @param point A scalar character of the reference (i.e., visit) (default:
+#'   `"Baseline"`)
+#' @param references A vector of column names to compute differences from
 #' @param percent Logical, if `TRUE` will also calculate percent change
 #' @param name A character vector to append to the new column names.  The second
 #'   element will be used if `percent = TRUE`.
 #' @param sep A character separation for the new column names
-#' @param rearrange A method to change the arrangement of the data.frame columns
-#'   with the new columns added: `end` will do nothing and append columns at
-#'   very end; `immediate` will append columns immediate after each `col`;
-#'   `after` will append columns after the last `col` entered.
+#' @param rearrange A method to change the arrangement of the `data.frame`
+#'   columns with the new columns added: `end` will do nothing and append
+#'   columns at very end; `immediate` will append columns immediate after each
+#'   `col`; `after` will append columns after the last `col` entered.
 #' @param collate For `percent = TRUE` and `rearrange = "after"`; will show the
 #'   change from reference for all `cols` then the percent change.
 #'
@@ -42,15 +44,15 @@
 #' df <- data.frame(
 #'   values      = values,
 #'   visits      = visits,
-#'   cfb         = change_from_visit(values, visits, "Baseline"),
-#'   pcfb        = pchange_from_visit(values, visits, "Baseline"),
-#'   p_screening = pchange_from_visit(values, visits, "Week 2"),
+#'   cfb         = change_from_reference(values, visits, "Baseline"),
+#'   pcfb        = pchange_from_reference(values, visits, "Baseline"),
+#'   p_screening = pchange_from_reference(values, visits, "Week 2"),
 #'   bl_value    = get_reference_value(values, visits)
 #' )
 #'
 #' df
-#' add_change_from_visit(df, "values", "visits")
-#' add_pchange_from_visit(df, "values", "visits")
+#' add_change_from_reference(df, "values", "visits")
+#' add_pchange_from_reference(df, "values", "visits")
 #'
 #' # Appending to a wide data.frame
 #'
@@ -78,58 +80,58 @@
 #'
 #' @export
 #' @name reference_change
-change_from_visit <- function(x, visits, reference = "Baseline") {
-  cfv_check(x, visits)
-  x - x[find_reference(visits, reference)]
+change_from_reference <- function(x, reference, point = "Baseline") {
+  cfv_check(x, reference)
+  x - x[find_reference(reference, point)]
 }
 
 #' @export
 #' @rdname reference_change
-pchange_from_visit <- function(x, visits, reference = "Baseline") {
-  cfv_check(x, visits)
-  m <- find_reference(visits, reference)
+pchange_from_reference <- function(x, reference, point = "Baseline") {
+  cfv_check(x, reference)
+  m <- find_reference(reference, point)
   (x - x[m]) / x[m]
 }
 
 #' @export
 #' @rdname reference_change
-prop_from_visit <- function(x, visits, reference = "Baseline") {
-  pchange_from_visit(x, visits, reference)
+prop_from_reference <- function(x, reference, point = "Baseline") {
+  pchange_from_reference(x, reference, point)
 }
 
 #' @export
 #' @rdname reference_change
-get_reference_value <- function(x, visits, reference = "Baseline") {
-  cfv_check(x, visits)
-  x[] <- x[find_reference(visits, reference)]
+get_reference_value <- function(x, reference, point = "Baseline") {
+  cfv_check(x, reference)
+  x[] <- x[find_reference(reference, point)]
   x
 }
 
 #' @export
 #' @rdname reference_change
-add_change_from_visit <- function(
+add_change_from_reference <- function(
   .data,
-  value = "value",
-  visits = "VisitName",
-  reference = "Baseline"
+  values = "value",
+  references = "VisitName",
+  point = "Baseline"
 ) {
   stopifnot(is.data.frame(.data))
-  .data[[paste0(value, "_change")]] <-
-    change_from_visit(.data[[value]], .data[[visits]], reference)
+  .data[[paste0(values, "_change")]] <-
+    change_from_reference(.data[[values]], .data[[references]], point)
   .data
 }
 
 #' @export
 #' @rdname reference_change
-add_pchange_from_visit <- function(
+add_pchange_from_reference <- function(
   .data,
-  value = "value",
-  visits = "VisitName",
-  reference = "Baseline"
+  values = "value",
+  references = "VisitName",
+  point = "Baseline"
 ) {
   stopifnot(is.data.frame(.data))
-  .data[[paste0(value, "_pchange")]] <-
-    pchange_from_visit(.data[[value]], .data[[visits]], reference)
+  .data[[paste0(values, "_pchange")]] <-
+    pchange_from_reference(.data[[values]], .data[[references]], point)
   .data
 }
 
@@ -137,7 +139,7 @@ add_pchange_from_visit <- function(
 #' @rdname reference_change
 add_change_from_reference_wide <- function(
   .data,
-  reference = "Baseline",
+  point = "Baseline",
   cols,
   percent = FALSE,
   name = c("CFB", "%CFB"),
@@ -149,7 +151,7 @@ add_change_from_reference_wide <- function(
 
   cn <- colnames(.data)
 
-  if (reference %out% cn) {
+  if (point %out% cn) {
     stop("Reference value ('",
       reference,
       "') not found in column names",
@@ -174,7 +176,7 @@ add_change_from_reference_wide <- function(
     cn <- colnames(.data)
     # pos <- which(i == cn)
 
-    ref_change <- .data[[i]] - .data[[reference]]
+    ref_change <- .data[[i]] - .data[[point]]
     n <- ncol(.data)
     .data[[n + 1]] <- ref_change
     names(.data)[n + 1] <- paste(i, name[1], sep = sep)
@@ -182,7 +184,7 @@ add_change_from_reference_wide <- function(
 
 
     if (percent) {
-      .data[[n + 2]] <- 100 * ref_change / .data[[reference]]
+      .data[[n + 2]] <- 100 * ref_change / .data[[point]]
       names(.data)[n + 2] <- paste(i, name[2], sep = sep)
       new_cols <- c(new_cols, n + 2)
     }
@@ -225,30 +227,30 @@ add_change_from_reference_wide <- function(
 
 # helpers -----------------------------------------------------------------
 
-cfv_check <- function(x, visits) {
-  if (length(x) != length(visits)) {
-    stop("`x` and `visit` must be the same length", call. = FALSE)
+cfv_check <- function(x, reference) {
+  if (length(x) != length(reference)) {
+    stop("`x` and `reference` must be the same length", call. = FALSE)
   }
 
   invisible(NULL)
 }
 
-find_reference <- function(visits, reference) {
-  if (length(reference) != 1L) {
-    stop("`reference` must be scalar", .call = FALSE)
+find_reference <- function(reference, point) {
+  if (length(point) != 1L) {
+    stop("`point` must be scalar", .call = FALSE)
   }
 
-  m <- match(reference, visits)
+  m <- match(point, reference)
 
   if (length(m) > 1L) {
-    warning("Multiple visits matched \n  ",
+    warning("Multiple references matched \n  ",
       collapse0(m, sep = " & "),
-      "\n  Using first visit")
+      "\n  Using first reference")
     m <- m[1L]
   }
 
   if (length(m) == 0) {
-    stop("reference `", reference, "` is not found in `visits`", call. = FALSE)
+    stop("point `", point, "` is not found in `reference`", call. = FALSE)
   }
 
   m
