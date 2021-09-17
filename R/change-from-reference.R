@@ -18,25 +18,6 @@
 #'   `add_change_from_reference()` and `add_pchange_from_reference()` will take
 #'   a `data.frame` and append reference change values.
 #'
-#' @param .data A `data.frame`
-#' @param x A vector of values or character name of column
-#' @param value The name of the value column
-#' @param reference A vector of references (i.e., such as visit names) or
-#'   character name of column
-#' @param point A scalar character of the reference (i.e., visit) (default:
-#'   `"Baseline"`)
-#' @param references A vector of column names to compute differences from
-#' @param percent Logical, if `TRUE` will also calculate percent change
-#' @param name A character vector to append to the new column names.  The second
-#'   element will be used if `percent = TRUE`.
-#' @param sep A character separation for the new column names
-#' @param rearrange A method to change the arrangement of the `data.frame`
-#'   columns with the new columns added: `end` will do nothing and append
-#'   columns at very end; `immediate` will append columns immediate after each
-#'   `col`; `after` will append columns after the last `col` entered.
-#' @param collate For `percent = TRUE` and `rearrange = "after"`; will show the
-#'   change from reference for all `cols` then the percent change.
-#'
 #' @examples
 #' visits <- c("Screening", "Baseline", "Week 2", "Week 4", "Week 6")
 #' values <- c(3, 2, 3, 2, 4)
@@ -78,8 +59,16 @@
 #'   percent = TRUE, rearrange = "end", collate = TRUE
 #' )
 #'
-#' @export
 #' @name reference_change
+NULL
+
+#' @export
+#' @rdname reference_change
+#' @param x A vector of values or character name of column
+#' @param reference A vector of references (i.e., such as visit names) or
+#'   character name of column
+#' @param point A scalar character of the reference (i.e., visit) (default:
+#'   `"Baseline"`)
 change_from_reference <- function(x, reference, point = "Baseline") {
   cfv_check(x, reference)
   x - x[find_reference(reference, point)]
@@ -109,6 +98,9 @@ get_reference_value <- function(x, reference, point = "Baseline") {
 
 #' @export
 #' @rdname reference_change
+#' @param .data A `data.frame`
+#' @param value The name of the value column
+#' @param references A vector of column names to compute differences from
 add_change_from_reference <- function(
   .data,
   values = "value",
@@ -137,6 +129,16 @@ add_pchange_from_reference <- function(
 
 #' @export
 #' @rdname reference_change
+#' @param percent Logical, if `TRUE` will also calculate percent change
+#' @param name A character vector to append to the new column names.  The second
+#'   element will be used if `percent = TRUE`.
+#' @param sep A character separation for the new column names
+#' @param rearrange A method to change the arrangement of the `data.frame`
+#'   columns with the new columns added: `end` will do nothing and append
+#'   columns at very end; `immediate` will append columns immediate after each
+#'   `col`; `after` will append columns after the last `col` entered.
+#' @param collate For `percent = TRUE` and `rearrange = "after"`; will show the
+#'   change from reference for all `cols` then the percent change.
 add_change_from_reference_wide <- function(
   .data,
   point = "Baseline",
