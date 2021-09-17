@@ -69,14 +69,20 @@ iqrs <- function(x, na.rm = FALSE) {
 #'
 #' @examples
 #' percentile_rank(0:9)
-#' x <- c(1, 1, 2, 5, 7, 7, 8, 10)
+#' x <- c(1, 1, 2, 5, 7, NA_integer_, 7, 10)
 #' percentile_rank(x)
-#' \dontrun{
 #' dplyr::percent_rank(x) * 100
-#' }
 percentile_rank <- function(x) {
-  p <- mark::props(x)
-  (cumsum(p) - p * 0.5)[match(x, sort.int(unique.default(x)))] * 100
+  id <- mark::pseudo_id(x)
+  p <- mark::props(id)
+  (cumsum(p) - p * 0.5)[match(x, sort.int(attr(id, "uniques")))] * 100
+}
+
+# No dependencies, slower.  Can substitute lengths() with tapply() but need some
+# extract work to retain the original values/names
+percentile_rank_ <- function(x, na.rm = TRUE) {
+  p <- lengths(split(x, x)) / length(if (na.rm) na.omit(x) else x)
+  (cumsum(p) - p * 0.5)[match(x, sort.int(unique(x)))] * 100
 }
 
 
