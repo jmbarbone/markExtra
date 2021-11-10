@@ -155,10 +155,10 @@ add_change_from_reference_wide <- function(
   cn <- colnames(.data)
 
   if (point %out% cn) {
-    stop("Reference value ('",
-      reference,
-      "') not found in column names",
-      call. = FALSE)
+    stop(
+      "Reference value ('", point, "') not found in column names",
+      call. = FALSE
+    )
   }
 
   m <- match(cols, cn, nomatch = NA_integer_)
