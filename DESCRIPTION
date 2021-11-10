@@ -17,7 +17,8 @@ Depends:
     R (>= 3.6)
 Imports:
     mark (>= 0.1.1),
-    methods
+    methods,
+    stats
 Suggests:
     dplyr,
     furrr,

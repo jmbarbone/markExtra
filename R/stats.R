@@ -82,7 +82,7 @@ percentile_rank <- function(x) {
 # No dependencies, slower.  Can substitute lengths() with tapply() but need some
 # extract work to retain the original values/names
 percentile_rank_ <- function(x, na.rm = TRUE) {
-  p <- lengths(split(x, x)) / length(if (na.rm) na.omit(x) else x)
+  p <- lengths(split(x, x)) / length(if (na.rm) stats::na.omit(x) else x)
   (cumsum(p) - p * 0.5)[match(x, sort.int(unique(x)))] * 100
 }
 
