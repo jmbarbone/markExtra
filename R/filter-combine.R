@@ -13,6 +13,9 @@
 #' @seealso [dplyr::filter()] and [dplyr::bind_rows()]
 
 filter_combine <- function(x, ..., .id, .names) {
+  require_namespace("rlang")
+  require_namespace("dplyr")
+
   stopifnot(length(.names) <= 2)
   dots <- rlang::enquos(...)
   xy <- list(x, dplyr::filter(x, !!!dots))

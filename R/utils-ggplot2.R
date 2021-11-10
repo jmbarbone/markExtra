@@ -10,9 +10,13 @@
 #' @export
 
 reverse_log_trans <- function(base = exp(1)) {
-  scales::trans_new(name      = paste0("reverselog-", format(base)),
-                    transform = function(x) -log(x, base),
-                    inverse   = function(x) base^(-x),
-                    breaks    = scales::log_breaks(base = base),
-                    domain    = c(1e-100, Inf))
+  require_namespace("scales")
+
+  scales::trans_new(
+    name      = paste0("reverselog-", format(base)),
+    transform = function(x) -log(x, base),
+    inverse   = function(x) base^(-x),
+    breaks    = scales::log_breaks(base = base),
+    domain    = c(1e-100, Inf)
+  )
 }

@@ -71,7 +71,8 @@ iqrs <- function(x, na.rm = FALSE) {
 #' percentile_rank(0:9)
 #' x <- c(1, 1, 2, 5, 7, NA_integer_, 7, 10)
 #' percentile_rank(x)
-#' dplyr::percent_rank(x) * 100
+#' # compare to dplyr
+#' # dplyr::percent_rank(x) * 100
 percentile_rank <- function(x) {
   id <- mark::pseudo_id(x)
   p <- mark::props(id)

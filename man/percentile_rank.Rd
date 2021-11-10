@@ -33,5 +33,6 @@ Computes a percentile rank for each score in a set.
 percentile_rank(0:9)
 x <- c(1, 1, 2, 5, 7, NA_integer_, 7, 10)
 percentile_rank(x)
-dplyr::percent_rank(x) * 100
+# compare to dplyr
+# dplyr::percent_rank(x) * 100
 }

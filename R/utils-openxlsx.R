@@ -21,11 +21,16 @@
 #'
 #' @export
 
-add_data_sheet <- function(wb, data, sheetname,
-                           tableStyle = "TableStyleLight8", bandedRows = TRUE,
-                           bandedCols = TRUE, ...,
-                           override = TRUE)
-{
+add_data_sheet <- function(
+  wb,
+  data,
+  sheetname,
+  tableStyle = "TableStyleLight8",
+  bandedRows = TRUE,
+  bandedCols = TRUE,
+  ...,
+  override = TRUE
+) {
   require_namespace("openxlsx")
 
   sns <- wb$sheet_names

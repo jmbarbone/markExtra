@@ -18,6 +18,9 @@
 #' add_mahalanobis(df, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
 
 add_mahalanobis <- function(df, ..., .inverted = FALSE, .name = "md", .p = "p_value", tolerance = .Machine$double.eps ) {
+  require_namespace("rlang")
+  require_namespace("dplyr")
+
   cols <- rlang::enquos(...)
   x <- dplyr::select(df, !!! cols)
   v <- which(stats::complete.cases(x))
@@ -53,6 +56,8 @@ add_mahalanobis <- function(df, ..., .inverted = FALSE, .name = "md", .p = "p_va
 #' add_euclidean(df, Sepal.Length, Sepal.Width)
 
 add_euclidean <- function(df, x, y, .name = "eucd") {
+  require_namespace("dplyr")
+
   x1 <- dplyr::pull(df, {{x}})
   y1 <- dplyr::pull(df, {{y}})
   center <- vap_dbl(list(x1, y1), mean, na.rm = TRUE)

@@ -17,6 +17,9 @@
 #'   https://greenwood.dev/2019/12/22/running-rust-in-rmd/
 #' @export
 engine_rust <- function(options) {
+  require_namespace("knitr")
+  require_namespace("xfun")
+
   if (isFALSE(options$eval)) {
     return()
   }
@@ -123,6 +126,8 @@ engine_rust <- function(options) {
 #' @rdname engine_rust
 #' @export
 set_rust_engine <- function() {
+  require_namespace("knitr")
+
   # Add checks for paths?
   bin <- file.path(Sys.getenv("USERPROFILE"), ".cargo", "bin")
   stopifnot(file.exists(file.path(bin, "cargo.exe")),
