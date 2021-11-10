@@ -27,7 +27,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      INPUT_ARGS: '"--no-manual", "--as-cran", "--no-vignettes"'
+      INPUT_ARGS: '"--no-manual", "--as-cran", "--no-vignettes", "no-build-vignettes", "--ignore-vignettes"'
       INPUT_BUILD_ARGS: '"--no-build-vignettes"'
 
 
