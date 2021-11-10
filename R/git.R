@@ -5,6 +5,7 @@
 #' @param branch The branch to copy from the repository (default: "master")
 #' @param test_fun A function to apply for testing (default: "devtools::test");
 #'   Note: the copied directory for testing is passed as the first argument
+#' @param options A named list of `options()` to temporarily set
 #'
 #' @export
 

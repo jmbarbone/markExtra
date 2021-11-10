@@ -21,6 +21,8 @@ test_git_repo(
 
 \item{test_fun}{A function to apply for testing (default: "devtools::test");
 Note: the copied directory for testing is passed as the first argument}
+
+\item{options}{A named list of `options()` to temporarily set}
 }
 \description{
 Test a git repository
