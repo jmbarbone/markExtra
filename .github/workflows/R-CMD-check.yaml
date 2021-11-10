@@ -27,9 +27,6 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
-      INPUT_ARGS: '"--no-manual", "--as-cran", "--no-vignettes", "no-build-vignettes", "--ignore-vignettes"'
-      INPUT_BUILD_ARGS: '"--no-build-vignettes"'
-
 
     steps:
       - uses: actions/checkout@v2
@@ -47,3 +44,6 @@ jobs:
           extra-packages: rcmdcheck
 
       - uses: r-lib/actions/check-r-package@v1
+        with:
+          args: '"--no-manual", "--as-cran", "--no-vignettes", "no-build-vignettes", "--ignore-vignettes"'
+          build_args: '"--no-build-vignettes"'
