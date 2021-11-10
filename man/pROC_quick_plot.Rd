@@ -34,7 +34,7 @@ When adding bootstrapped confidence intervals, the core function of
   There will likely be a delay when running with bootstraps.
 }
 \examples{
-if (mark::require_namespace("pROC")) {
+if (mark::package_available("pROC")) {
   x <- pROC::aSAH
   mod <- pROC::roc(x$outcome, x$s100b, levels = c("Good", "Poor"))
   pROC_quick_plot(mod)

@@ -87,7 +87,7 @@ subset_rownames <- function(x, y) {
 #'
 #' @export
 #' @examples
-#' if (mark::require_namespace("pROC")) {
+#' if (mark::package_available("pROC")) {
 #'   x <- pROC::aSAH
 #'   mod <- pROC::roc(x$outcome, x$s100b, levels = c("Good", "Poor"))
 #'   pROC_quick_plot(mod)
