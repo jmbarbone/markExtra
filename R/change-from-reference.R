@@ -99,7 +99,7 @@ get_reference_value <- function(x, reference, point = "Baseline") {
 #' @export
 #' @rdname reference_change
 #' @param .data A `data.frame`
-#' @param value The name of the value column
+#' @param values The name of the value column
 #' @param references A vector of column names to compute differences from
 add_change_from_reference <- function(
   .data,
@@ -129,6 +129,7 @@ add_pchange_from_reference <- function(
 
 #' @export
 #' @rdname reference_change
+#' @param cols A character vector of column names
 #' @param percent Logical, if `TRUE` will also calculate percent change
 #' @param name A character vector to append to the new column names.  The second
 #'   element will be used if `percent = TRUE`.

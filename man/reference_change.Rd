@@ -55,7 +55,11 @@ character name of column}
 
 \item{.data}{A `data.frame`}
 
+\item{values}{The name of the value column}
+
 \item{references}{A vector of column names to compute differences from}
+
+\item{cols}{A character vector of column names}
 
 \item{percent}{Logical, if `TRUE` will also calculate percent change}
 
@@ -71,8 +75,6 @@ columns at very end; `immediate` will append columns immediate after each
 
 \item{collate}{For `percent = TRUE` and `rearrange = "after"`; will show the
 change from reference for all `cols` then the percent change.}
-
-\item{value}{The name of the value column}
 }
 \description{
 Calculate change from visit or proportion of change from a visit
