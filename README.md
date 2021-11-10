@@ -4,6 +4,8 @@
 # markExtra
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/jmbarbone/markExtra/workflows/R-CMD-check/badge.svg)](https://github.com/jmbarbone/markExtra/actions)
 <!-- badges: end -->
 
 markExtra contains some additional functions that did not feel like they
