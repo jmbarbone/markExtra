@@ -41,7 +41,9 @@ engine_rust <- function(options) {
     file <- "src/main.rs"
 
     # May not be a problem if all in tempdir?
-    stopifnot("src/main.rs already exists" = !file.exists(file))
+    if (!file.exists(file)) {
+      stop("src/main.rs already exists")
+    }
 
     if (!dir.exists("src")) {
       remove_src <- TRUE

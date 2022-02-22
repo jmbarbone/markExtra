@@ -51,14 +51,24 @@ p_value_sig <- function(x, cutoffs = c("***" = 0.001,
   cutoffs <- sort(cutoffs, decreasing = FALSE)
   cutoffs <- append(cutoffs, c(" " = 1))
   nm <- names(cutoffs)
-  stopifnot("cuttoffs must be numeric" = is.numeric(cutoffs),
-            "cuttoffs must be named" = !is.null(nm),
-            "x must be 1 or less" = all(x <= 1, na.rm = TRUE))
   vap_chr(x,
           function(p) {
             nm[min(which(cutoffs >= p),
                    na.rm = TRUE)]
           })
+
+  if (!is.numeric(cutoffs)) {
+    stop("cutoffs must be numeric")
+  }
+
+  if (is.null(nm)) {
+    stop("cutoffs must be named")
+  }
+
+  if (!all(x <= 1, na.rm = TRUE)) {
+    stop("x must be 1 or less")
+  }
+
 }
 
 ndigits <- function(x) {
