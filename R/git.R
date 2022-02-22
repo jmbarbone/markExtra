@@ -26,8 +26,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
     stop("No .Rproj found in project_dir")
   }
 
-  temp_dir <- mark::file_path(
-    tempdir(check = TRUE),
+  temp_dir <- mark::file_path(tempdir(check = TRUE),
     "test-git-repo",
     basename(x)
   )

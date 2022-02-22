@@ -44,18 +44,19 @@ p_round <- function(x, n = 3, sig = n) {
 
 #' @rdname p_values
 #' @export
-p_value_sig <- function(x, cutoffs = c("***" = 0.001,
-                                       "**" = 0.01,
-                                       "*" = 0.05,
-                                       "." = 0.10)) {
+p_value_sig <- function(
+  x,
+  cutoffs = c(
+    "***" = 0.001,
+    "**"  = 0.01,
+    "*"   = 0.05,
+    "."   = 0.10
+  )
+)
+{
   cutoffs <- sort(cutoffs, decreasing = FALSE)
   cutoffs <- append(cutoffs, c(" " = 1))
   nm <- names(cutoffs)
-  vap_chr(x,
-          function(p) {
-            nm[min(which(cutoffs >= p),
-                   na.rm = TRUE)]
-          })
 
   if (!is.numeric(cutoffs)) {
     stop("cutoffs must be numeric")
@@ -69,6 +70,7 @@ p_value_sig <- function(x, cutoffs = c("***" = 0.001,
     stop("x must be 1 or less")
   }
 
+  vap_chr(x, function(p)  nm[min(which(cutoffs >= p), na.rm = TRUE)])
 }
 
 ndigits <- function(x) {
