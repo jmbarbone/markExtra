@@ -16,6 +16,7 @@ tukey_coef <- function(x) {
   q3 <- stats::quantile(x, .75, names = FALSE, na.rm = TRUE)
   iqr <- q3 - q1
 
+  # TODO maybe don't use case_when?
   dplyr::case_when(
     x < q1   ~ (x - q1) / iqr,
     x > q3   ~ (q3 - x) / iqr,
@@ -75,20 +76,20 @@ odds_ratio <- function(a, b = NULL, c = NULL, d = NULL, type = "hits_misses")
     a <- a[1]
   }
 
-  if(a < 0 | b < 0 | c < 0 | d < 0) {
+  if (a < 0 | b < 0 | c < 0 | d < 0) {
     stop("Cells cannot have negative numbers", call. = FALSE)
   }
 
-  if(type == "hits_evals") {
+  if (type == "hits_evals") {
     c <- c - a
     d <- d - b
   }
 
-  if((b == 0) | (c == 0))  {
+  if ((b == 0) | (c == 0))  {
     return(NaN)
   }
 
-  if(a < 5 | b < 5 | c < 5 | d < 5) {
+  if (a < 5 | b < 5 | c < 5 | d < 5) {
     warning("Cells should all have at least 5 observations",
             call. = FALSE)
   }
@@ -147,11 +148,12 @@ r2cohend <- function(r, var = FALSE) {
   }
 
   res[nas] <- NA_real_
-  res[ok] <- if (var) {
-    (4 * r) / ((1 - r^2)^3)
-  } else {
-    (2 * r) / sqrt(1 - r^2)
-  }
+  res[ok] <-
+    if (var) {
+      (4 * r) / ((1 - r^2)^3)
+    } else {
+      (2 * r) / sqrt(1 - r^2)
+    }
 
   res
 }
@@ -159,11 +161,8 @@ r2cohend <- function(r, var = FALSE) {
 #' @rdname effect_sizes
 #' @export
 cohend2r <- function(cohend, n1 = NULL, n2 = n1, var = FALSE) {
-  if (is.null(n1)) {
-    a <- 4
-  } else {
-    a <- sum(n1, n2)^2 / prod(n1, n2)
-  }
+  a <- if (is.null(n1)) 4 else sum(n1, n2)^2 / prod(n1, n2)
+
   if (var) {
     (a^2 * cohend) / ((cohend^2 + a)^3)
   } else {

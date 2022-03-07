@@ -33,10 +33,14 @@ coef_equation.lm <- function(mod, FUN = sf2, ...) {
 }
 
 sf2 <- function(x) {
-  sub("\\.$", "",
-      formatC(x, digits = 2, format = "fg", flag = "#",
-              drop0trailing = FALSE,
-              preserve.width = "individual",
-              width = NULL)
+  x <- formatC(
+    x,
+    digits         = 2,
+    format         = "fg",
+    flag           = "#",
+    drop0trailing  = FALSE,
+    preserve.width = "individual",
+    width          = NULL
   )
+  sub("\\.$", "", x)
 }

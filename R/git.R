@@ -18,13 +18,15 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
 
   x <- norm_path(x, check = TRUE)
 
-  stopifnot(
-    "No git directory detected" = has_git(x),
-    "No .Rproj found in project_dir" = has_rproj(x)
-    )
+  if (!has_git(x)) {
+    stop("N git directory detected")
+  }
 
-  temp_dir <- mark::file_path(
-    tempdir(check = TRUE),
+  if (!has_rproj(x)) {
+    stop("No .Rproj found in project_dir")
+  }
+
+  temp_dir <- mark::file_path(tempdir(check = TRUE),
     "test-git-repo",
     basename(x)
   )

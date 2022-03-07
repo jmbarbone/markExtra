@@ -64,7 +64,11 @@ print.mark_roc_thres <- function(x, ...) {
 subset_rownames <- function(x, y) {
   # Try for actual values, then use generic rownames()
   rn <- attr(x, "row.names") %||% rownames(x)
-  stopifnot("Object `x` has no rownames" = !is.null(rn))
+
+  if (is.null(rn)) {
+    stop("Object `x` has no rownames")
+  }
+
   x[rn == y, ]
 }
 
