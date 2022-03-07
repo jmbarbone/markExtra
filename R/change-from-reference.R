@@ -108,8 +108,11 @@ add_change_from_reference <- function(
   point = "Baseline"
 ) {
   stopifnot(is.data.frame(.data))
-  .data[[paste0(values, "_change")]] <-
-    change_from_reference(.data[[values]], .data[[references]], point)
+  .data[[paste0(values, "_change")]] <- change_from_reference(
+    x = .data[[values]],
+    reference = .data[[references]],
+    point = point
+  )
   .data
 }
 
@@ -122,8 +125,11 @@ add_pchange_from_reference <- function(
   point = "Baseline"
 ) {
   stopifnot(is.data.frame(.data))
-  .data[[paste0(values, "_pchange")]] <-
-    pchange_from_reference(.data[[values]], .data[[references]], point)
+  .data[[paste0(values, "_pchange")]] <- pchange_from_reference(
+    x = .data[[values]],
+    reference = .data[[references]],
+    point = point
+  )
   .data
 }
 
