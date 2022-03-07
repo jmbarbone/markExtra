@@ -37,7 +37,6 @@ add_mahalanobis <- function(df, ..., .inverted = FALSE, .name = "md", .p = "p_va
   )
 
   df[[.p]][v] <- stats::pchisq(df[[.name]][v], df = ncol(x), lower.tail = FALSE)
-
   df
 }
 
@@ -57,7 +56,6 @@ add_mahalanobis <- function(df, ..., .inverted = FALSE, .name = "md", .p = "p_va
 
 add_euclidean <- function(df, x, y, .name = "eucd") {
   require_namespace("dplyr")
-
   x1 <- dplyr::pull(df, {{x}})
   y1 <- dplyr::pull(df, {{y}})
   center <- vap_dbl(list(x1, y1), mean, na.rm = TRUE)
