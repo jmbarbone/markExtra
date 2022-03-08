@@ -10,7 +10,6 @@
 #' @export
 
 test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, options = NULL) {
-  # browser()
   require_namespace("devtools")
   op <- options()
   on.exit(options(op), add = TRUE)
@@ -26,7 +25,8 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
     stop("No .Rproj found in project_dir")
   }
 
-  temp_dir <- mark::file_path(tempdir(check = TRUE),
+  temp_dir <- mark::file_path(
+    tempdir(check = TRUE),
     "test-git-repo",
     basename(x)
   )
@@ -45,9 +45,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
   )
 
   system2("git", args)
-
-  FUN <- match.fun(test_fun)
-  FUN(temp_dir, ...)
+  (match.fun(test_fun))(temp_dir, ...)
 }
 
 # TODO Maybe add a FAIL argument for mark::norm_path?

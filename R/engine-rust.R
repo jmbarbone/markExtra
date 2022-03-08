@@ -25,15 +25,17 @@ engine_rust <- function(options) {
   }
 
   code <- options$code
-  cmd0 <- file.path(Sys.getenv("USERPROFILE"), ".cargo", "bin")
-  toml <- isTRUE(options$toml)
-  env <- options$engine.env
-  env <- env %||% character()
-  remove_src <- FALSE
+  cmd0              <- file.path(Sys.getenv("USERPROFILE"), ".cargo", "bin")
+  toml              <- isTRUE(options$toml)
+  env               <- options$engine.env
+  env               <- env %||% character()
+  remove_src        <- FALSE
   remove_temp_files <- FALSE
-  timeout <- options$timeout %||% 0L
-  wd <- getwd()
+  timeout           <- options$timeout %||% 0L
+  wd                <- getwd()
+
   setwd(tempdir())
+  on.exit(setwd(wd), add = TRUE)
 
   if (toml) {
     stopifnot(file.copy(file.path(wd, "cargo.toml"), "cargo.toml"))
@@ -61,9 +63,6 @@ engine_rust <- function(options) {
   xfun::write_utf8(code, file)
 
   on.exit({
-    # Reset wd
-    setwd(wd)
-
     # May not be necessary if all done in temp files?
     if (remove_src) {
       unlink("src", recursive = TRUE)
@@ -132,8 +131,11 @@ set_rust_engine <- function() {
 
   # Add checks for paths?
   bin <- file.path(Sys.getenv("USERPROFILE"), ".cargo", "bin")
-  stopifnot(file.exists(file.path(bin, "cargo.exe")),
-            file.exists(file.path(bin, "rustc.exe")))
+
+  stopifnot(
+    file.exists(file.path(bin, "cargo.exe")),
+    file.exists(file.path(bin, "rustc.exe"))
+  )
 
   knitr::knit_engines$set(rust = engine_rust)
 }
