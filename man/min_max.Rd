@@ -18,3 +18,10 @@ A vector of x normalizes so the lower scores is `lower` and highest score is `up
 \description{
 Min-max normalization
 }
+\examples{
+x <- c(0.34, 0.24, 0.65, 0.21, 0.18, 0.79, 0.13, 0.94, 0.22, 0.1)
+min_max(x)
+min_max(x, upper = 10)
+min_max(x, lower = -1)
+min_max(x, l = 10, u = 20)
+}
