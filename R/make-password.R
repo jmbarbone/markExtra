@@ -13,12 +13,7 @@ make_password <- function(n = 16L, specials = "!@#$%^&*_+-=?", silent = TRUE) {
   chars <- c(letters, LETTERS, 0:9, chr_split(specials))
   pass <- collapse0(sample(chars, n, replace = TRUE))
   message("Copying to clipboard")
-  tryCatch(write_clipboard(pass),
-           error = function(e) {
-             warning(e, call = FALSE)
-           })
-  if (!silent) {
-    cat(pass, "\n")
-  }
+  tryCatch(write_clipboard(pass), error = function(e) warning(e, call = FALSE))
+  if (!silent) cat(pass, "\n")
   invisible(NULL)
 }

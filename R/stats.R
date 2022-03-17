@@ -98,13 +98,7 @@ percentile_rank_ <- function(x, na.rm = TRUE) {
 
 sd_pooled <- function(ns, ses, max = FALSE) {
   st_devs <- ses * vap_dbl(ns, sqrt)
-
-  a <- if (max) {
-    0
-  } else {
-    -length(st_devs)
-  }
-
+  a <- if (max) 0 else -length(st_devs)
   sqrt(sum(vap_dbl(ns, function(x) x - 1) * vap_dbl(st_devs, function(x) x^2)) / sum(ns, a))
 }
 
@@ -117,8 +111,7 @@ sd_pooled <- function(ns, ses, max = FALSE) {
 #' @return A vector
 #' @export
 
-sterr <- function(x, na.rm = F)
-{
+sterr <- function(x, na.rm = FALSE) {
   UseMethod("sterr", x)
 }
 

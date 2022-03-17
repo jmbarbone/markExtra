@@ -38,7 +38,6 @@ p_round <- function(x, n = 3, sig = n) {
 
   empty <- out == ""
   out[empty] <- vap_chr(x[empty], format, digits = sig, nsmall = sig, scientific = FALSE)
-
   out
 }
 
