@@ -115,12 +115,14 @@ sterr <- function(x, na.rm = FALSE) {
   UseMethod("sterr", x)
 }
 
+#' @export
 sterr.numeric <- function(x, na.rm = F) {
   n <- length(x)
   sd <- stats::sd(x, na.rm = na.rm)
   sd / sqrt(n)
 }
 
+#' @export
 sterr.data.frame <- function(x, na.rm = F) {
   mark::vap_dbl(x, sterr, na.rm = na.rm)
 }
