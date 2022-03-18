@@ -33,14 +33,19 @@ pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
   ci_sp <- subset_rownames(cis$sensitivity, thres)
   ci_se <- subset_rownames(cis$specificity, thres)
 
-  stopifnot(length(ci_sp) == 3L & length(ci_sp) == 3L)
+  stopifnot(
+    length(ci_sp) == 3L,
+    length(ci_sp) == 3L
+  )
 
-  structure(thres,
-            class = c("mark_roc_thres", "numeric"),
-            typeof = "double",
-            method = method,
-            ci_sp = ci_sp,
-            ci_se = ci_se)
+  structure(
+    thres,
+    class = c("mark_roc_thres", "numeric"),
+    typeof = "double",
+    method = method,
+    ci_sp = ci_sp,
+    ci_se = ci_se
+  )
 
 }
 
@@ -121,21 +126,18 @@ pROC_quick_plot <- function(mod, thres_method = c("youden", "closest.topleft"), 
     cis <- pROC_ci_sp_roc(mod, boots = boots)
     # Defaults to a grey
     ci_col <- grDevices::rgb(red = 0, green = 0, blue = 0, alpha = 0.1)
-    f <- "pROC" %colons% "plot.ci.sp"
-    f(
-      cis,
-      type = "shape",
-      col = ci_col
-    )
+    ("pROC" %colons% "plot.ci.sp")(cis, type = "shape", col = ci_col)
   }
 
   # Add smoothed
   plot(pROC::smooth(mod), add = TRUE, col = col, lwd = 2, lty = 2)
 
-  graphics::legend("bottomright",
-                   legend = c("Empirical", "Smoothed"),
-                   col = c(graphics::par("fg"), col),
-                   lwd = 2)
+  graphics::legend(
+    "bottomright",
+    legend = c("Empirical", "Smoothed"),
+    col = c(graphics::par("fg"), col),
+    lwd = 2
+  )
 
   invisible(mod)
 }

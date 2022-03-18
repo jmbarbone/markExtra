@@ -11,7 +11,6 @@
 
 reverse_log_trans <- function(base = exp(1)) {
   require_namespace("scales")
-
   scales::trans_new(
     name      = paste0("reverselog-", format(base)),
     transform = function(x) -log(x, base),

@@ -44,11 +44,15 @@ add_data_sheet <- function(
   }
 
   openxlsx::addWorksheet(wb, sheetname)
-  openxlsx::writeDataTable(wb, sheetname, x = data,
-                           tableStyle = tableStyle,
-                           bandedRows = bandedRows,
-                           bandedCols = bandedCols,
-                           ...)
+  openxlsx::writeDataTable(
+    wb,
+    sheetname,
+    x = data,
+    tableStyle = tableStyle,
+    bandedRows = bandedRows,
+    bandedCols = bandedCols,
+    ...
+  )
   invisible(wb)
 }
 
