@@ -3,6 +3,8 @@
 S3method(coef_equation,default)
 S3method(coef_equation,lm)
 S3method(print,mark_roc_thres)
+S3method(sterr,data.frame)
+S3method(sterr,numeric)
 export("%=+%")
 export("%=-%")
 export("%newer%")

@@ -4,7 +4,7 @@
 \alias{sterr}
 \title{Standard error}
 \usage{
-sterr(x, na.rm = F)
+sterr(x, na.rm = FALSE)
 }
 \arguments{
 \item{x}{A vector or data.frame}
