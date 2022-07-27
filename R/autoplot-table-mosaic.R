@@ -17,7 +17,7 @@ autoplot_table_mosaic <- function(x) {
   stopifnot(
     inherits(x, "table"),
     length(d) == 2,
-    d[1] == d[2],
+    d[1] == d[2]
   )
 
   dn <- dimnames(x)
