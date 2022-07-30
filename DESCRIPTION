@@ -36,10 +36,10 @@ Suggests:
     testthat (>= 3.0.0),
     xfun
 Remotes:
-RoxygenNote: 7.2.0
     github::jmbarbone/AlignAssign@tilde,
     github::jmbarbone/spelling@45-alnumeric-hyphenated,
     github::jmbarbone/mark@HEAD
+RoxygenNote: 7.2.1
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 VignetteBuilder: knitr
