@@ -15,15 +15,15 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-library(jordan)
+library(markExtra)
 ```
 
 Function sets the knitr rust engine
 
 ```{r set engine}
-jordan::set_rust_engine()
+markExtra::set_rust_engine()
 # wrapper for: 
-# knitr::knit_engines$set(rust = jordan::engine_rust)
+# knitr::knit_engines$set(rust = markExtra::engine_rust)
 ```
 
 ## Rust
