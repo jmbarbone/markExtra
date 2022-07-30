@@ -1,5 +1,6 @@
 # markExtra (development version)
 
+* adds experimental `cache()`
 * adds `autoplot_table_mosaic()` for making mosaic plots from tables
 * adds `min_max()` normalization
 
