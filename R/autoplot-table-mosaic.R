@@ -42,7 +42,7 @@ autoplot_table_mosaic <- function(x) {
 
   # This has to be attached
   # https://github.com/haleyjeppson/ggmosaic/issues/58
-  require("ggmosaic", character.only = TRUE)
+  methods::getFunction("require")("ggmosaic", character.only = TRUE)
 
   ggplot2::ggplot(df) +
     ggmosaic::geom_mosaic(
