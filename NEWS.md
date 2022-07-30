@@ -1,5 +1,6 @@
 # markExtra (development version)
 
+* corrects issue with `autoplot_table_mosaic()` [(#6)](github.com/jmbarbone/markExtra/issues/6)
 * adds `autoplot_table_mosaic()` for making mosaic plots from tables
 * adds `min_max()` normalization
 
