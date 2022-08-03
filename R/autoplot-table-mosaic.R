@@ -26,12 +26,11 @@ autoplot_table_mosaic <- function(x) {
   rownames(x) <- as.numeric(factor(rownames(x)))
   colnames(x) <- as.numeric(factor(colnames(x)))
 
-  df <- psych::table2df(x)
   # TODO this could probably be replaced
   df <- psych::table2df(x)
   colnames(df) <- nm
   df[] <- mapply(
-    function(x, y) factor(x, levels = y),
+    function(x, y) factor(x, labels = y),
     x = as.list(df),
     y = dn,
     SIMPLIFY = FALSE
