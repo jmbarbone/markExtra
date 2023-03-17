@@ -5,7 +5,6 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/jmbarbone/markExtra/workflows/R-CMD-check/badge.svg)](https://github.com/jmbarbone/markExtra/actions)
 [![R-CMD-check](https://github.com/jmbarbone/markExtra/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jmbarbone/markExtra/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
