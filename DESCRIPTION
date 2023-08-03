@@ -20,6 +20,7 @@ Imports:
     methods,
     stats
 Suggests:
+    devtools,
     dplyr,
     furrr,
     future,
