@@ -16,6 +16,7 @@ LazyData: true
 Depends:
     R (>= 3.6)
 Imports:
+    fuj,
     mark (>= 0.1.1),
     methods,
     stats
