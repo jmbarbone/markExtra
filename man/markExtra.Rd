@@ -8,6 +8,13 @@
 \description{
 Extra functions that may not be generalizable enough for `mark`
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://jmbarbone.github.io/markExtra/}
+}
+
+}
 \author{
 \strong{Maintainer}: Jordan Mark Barbone \email{jmbarbone@gmail.com} (\href{https://orcid.org/0000-0001-9788-3628}{ORCID}) [copyright holder]
 

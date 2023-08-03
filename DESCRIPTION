@@ -40,7 +40,7 @@ Remotes:
     github::jmbarbone/AlignAssign@tilde,
     github::jmbarbone/spelling@45-alnumeric-hyphenated,
     github::jmbarbone/mark@HEAD
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 VignetteBuilder: knitr

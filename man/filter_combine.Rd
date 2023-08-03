@@ -12,7 +12,11 @@ filter_combine(x, ..., .id, .names)
 \item{...}{
   Arguments passed on to \code{\link[dplyr:filter]{dplyr::filter}}
   \describe{
-    \item{\code{}}{}
+    \item{\code{.by}}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+<\code{\link[dplyr:dplyr_tidy_select]{tidy-select}}> Optionally, a selection of columns to
+group by for just this operation, functioning as an alternative to \code{\link[dplyr:group_by]{group_by()}}. For
+details and examples, see \link[dplyr:dplyr_by]{?dplyr_by}.}
   }}
 
 \item{.id}{When .id is supplied, a new column of identifiers is created to link each row to its original data frame.
