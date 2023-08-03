@@ -155,14 +155,20 @@ pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0
     stop("'conf_level' must be within the interval [0,1].", call. = FALSE)
   }
 
-  f <- "pROC" %colons% "roc.utils.is.perfect.curve"
-  if (f(mod)) {
-    warning("ci.sp() of a ROC curve with AUC == 1 is always a null interval",
-            " and can be misleading.", call. = FALSE)
+  if (isTRUE(try(("pROC" %colons% "roc_utils_is_perfect_curve")(mod)))) {
+    warning(
+      "ci.sp() of a ROC curve with AUC == 1 is always a null interval",
+      " and can be misleading.",
+      call. = FALSE
+    )
   }
 
   # Use of furrr makes bootstrapping much, much quicker
-  future::plan(future::multiprocess)
+  if (fuj::is_windows()) {
+    future::plan(future::multiprocess)
+  } else {
+    future::plan(future::multisession)
+  }
 
   perfs <- furrr::future_map(
     seq(boots),
@@ -174,8 +180,7 @@ pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0
   # Set back to default
   future::plan(future::sequential)
 
-  # Suppress messages about new names
-  perfs <- suppressMessages(dplyr::bind_rows(perfs))
+  perfs <- as.data.frame(Reduce(rbind, perfs))
 
   # anyNA(.) quicker than any(is.na(.))
   if (anyNA(perfs)) {
