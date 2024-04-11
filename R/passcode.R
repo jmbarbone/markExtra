@@ -27,7 +27,7 @@ passcode <- function(
     two = c("animals", "nouns"),
     numbers = len %/% 4L
 ) {
-  requireNamespace("codename")
+  fuj::require_namespace("codename")
   reset_fail <- FALSE
   on.exit(if (reset_fail) passcode_env$reset(), add = TRUE)
 
