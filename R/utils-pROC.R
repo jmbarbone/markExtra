@@ -12,7 +12,7 @@
 #' mod <- pROC::roc(x$outcome, x$s100b, levels=c("Good", "Poor"))
 #'
 #' pROC_optimal_threshold(mod)
-
+# nolint next: object_name_linter.
 pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
   require_namespace("pROC")
   stopifnot(inherits(mod, "roc"))
@@ -104,6 +104,7 @@ subset_rownames <- function(x, y) {
 #'   pROC_quick_plot(mod, boots = 100)
 #' }
 #' }
+# nolint next: object_name_linter.
 pROC_quick_plot <- function(
     mod,
     thres_method = c("youden", "closest.topleft"),
@@ -150,6 +151,7 @@ pROC_quick_plot <- function(
 # Replaces pROC ::: ci.sp.roc
 # pROC function is slow; uses plyr functions and has some slower applications
 #   of base functions
+# nolint next: object_name_linter.
 pROC_ci_sp_roc <- function(
     mod,
     boots = 500,
@@ -161,7 +163,7 @@ pROC_ci_sp_roc <- function(
   require_namespace("dplyr")
 
   # Maintain same warnings
-  if (conf_level > 1 | conf_level < 0) {
+  if (conf_level > 1 || conf_level < 0) {
     stop("'conf_level' must be within the interval [0,1].", call. = FALSE)
   }
 
@@ -200,7 +202,7 @@ pROC_ci_sp_roc <- function(
   structure(
     ci,
     # Default Doesn't use percentage
-    # rownames = paste0(sensitivities, ifelse(roc$percent, "%", "")),
+    #> rownames = paste0(sensitivities, ifelse(roc$percent, "%", "")),
     rownames = se,
     con.level = conf_level,
     boot.n = boots,

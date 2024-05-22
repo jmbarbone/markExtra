@@ -32,12 +32,13 @@ fishers_method <- function(x, zeros = FALSE) {
 #' Computes the IQR magnitude of a vector
 #'
 #' @param x A vector of values
-#' @param na.rm Logical. If `TRUE`, any `NA` and `NaN`'s are removed from `x` before the median and quantiles are computed.
+#' @param na.rm Logical. If `TRUE`, any `NA` and `NaN`'s are removed from `x`
+#'   before the median and quantiles are computed.
 #'
 #' @export
 #' @examples
 #' iqrs(stats::rchisq(100, 2))
-
+# nolint next: object_name_linter.
 iqrs <- function(x, na.rm = FALSE) {
   (x - stats::median(x, na.rm = na.rm)) /
     diff(stats::quantile(x, c(.25, .75), names = FALSE, na.rm = na.rm))
@@ -81,6 +82,7 @@ percentile_rank <- function(x) {
 
 # No dependencies, slower.  Can substitute lengths() with tapply() but need some
 # extract work to retain the original values/names
+# nolint next: object_name_linter.
 percentile_rank_ <- function(x, na.rm = TRUE) {
   p <- lengths(split(x, x)) / length(if (na.rm) stats::na.omit(x) else x)
   (cumsum(p) - p * 0.5)[match(x, sort.int(unique(x)))] * 100
@@ -95,11 +97,12 @@ percentile_rank_ <- function(x, na.rm = TRUE) {
 #' @param ses A vector of standard errors.
 #' @param max Logical value.  Whether to compute the max pooled deviation.
 #' @export
-
 sd_pooled <- function(ns, ses, max = FALSE) {
   st_devs <- ses * vap_dbl(ns, sqrt)
   a <- if (max) 0 else -length(st_devs)
-  sqrt(sum(vap_dbl(ns, function(x) x - 1) * vap_dbl(st_devs, function(x) x^2)) / sum(ns, a))
+  sqrt(sum(
+    vap_dbl(ns, function(x) x - 1) * vap_dbl(st_devs, function(x) x^2)
+  ) / sum(ns, a))
 }
 
 #' Standard error
@@ -110,19 +113,21 @@ sd_pooled <- function(ns, ses, max = FALSE) {
 #' @param na.rm Passed to `stats::sd()`.
 #' @return A vector
 #' @export
-
+# nolint next: object_name_linter.
 sterr <- function(x, na.rm = FALSE) {
   UseMethod("sterr", x)
 }
 
 #' @export
-sterr.numeric <- function(x, na.rm = F) {
+# nolint next: object_name_linter.
+sterr.numeric <- function(x, na.rm = FALSE) {
   n <- length(x)
   sd <- stats::sd(x, na.rm = na.rm)
   sd / sqrt(n)
 }
 
 #' @export
-sterr.data.frame <- function(x, na.rm = F) {
+# nolint next: object_name_linter.
+sterr.data.frame <- function(x, na.rm = FALSE) {
   mark::vap_dbl(x, sterr, na.rm = na.rm)
 }

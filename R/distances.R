@@ -4,7 +4,8 @@
 #'
 #' @param df A data.frame
 #' @param ... Columns to select
-#' @param .inverted Logical. If TRUE, covariance matrix (p x p) of the distribution is supposed to contain the inverse of the covariance matrix.
+#' @param .inverted Logical. If TRUE, covariance matrix (p x p) of the
+#'   distribution is supposed to contain the inverse of the covariance matrix.
 #' @param .name The name of the new column for the distance value
 #' @param .p The name for the new column for the p-value calculation
 #' @param tolerance `tol` in [base::solve()]
@@ -17,7 +18,14 @@
 #' df[1, ] <- NA_real_
 #' add_mahalanobis(df, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width)
 
-add_mahalanobis <- function(df, ..., .inverted = FALSE, .name = "md", .p = "p_value", tolerance = .Machine$double.eps ) {
+add_mahalanobis <- function(
+    df,
+    ...,
+    .inverted = FALSE,
+    .name = "md",
+    .p = "p_value",
+    tolerance = .Machine$double.eps
+) {
   require_namespace("rlang")
   require_namespace("dplyr")
 

@@ -29,6 +29,7 @@ default_env <- function(key = "default") {
     options = {
       eval({
         substitute({
+          # nolint next: object_usage_linter. False positive for 'i'
           for (i in getOption("defaultPackages")) {
             requireNamespace(i)
           }

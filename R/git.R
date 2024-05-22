@@ -9,7 +9,13 @@
 #'
 #' @export
 
-test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, options = NULL) {
+test_git_repo <- function(
+    x,
+    ...,
+    branch = "master",
+    test_fun = devtools::test,
+    options = NULL
+) {
   require_namespace("devtools")
   op <- options()
   on.exit(options(op), add = TRUE)
@@ -50,7 +56,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
 
 # TODO Maybe add a FAIL argument for mark::norm_path?
 # Passed to normalizePath(., mustWork = fail)
-# norm_path(x, check = fail, remove = check, fail = FALSE)
+#> norm_path(x, check = fail, remove = check, fail = FALSE)
 
 get_project_git_url <- function(path) {
   git_folder <- tryCatch(
@@ -59,7 +65,7 @@ get_project_git_url <- function(path) {
       stop(e$message, call. = FALSE)
     }
   )
-  args <- sprintf(' --git-dir %s remote get-url origin', git_folder)
+  args <- sprintf(" --git-dir %s remote get-url origin", git_folder)
   system2("git", args, stdout = TRUE)
 }
 
