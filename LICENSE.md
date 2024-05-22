@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2020 Jordan Mark Barbone
+Copyright (c) 2024 markExtra authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
