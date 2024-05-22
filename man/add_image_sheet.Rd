@@ -11,7 +11,8 @@ add_image_sheet(wb, file, sheetname, ..., override = TRUE)
 
 \item{file}{An image file. Valid file types are: jpeg, png, bmp}
 
-\item{sheetname}{The worksheet to write to. Can be the worksheet index or name.}
+\item{sheetname}{The worksheet to write to. Can be the worksheet index or
+name.}
 
 \item{...}{Additional arguments passed to openxlsx::insertImage}
 

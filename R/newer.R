@@ -20,7 +20,11 @@
     return(TRUE)
   }
 
-  if (isTRUE(all.equal(x_time, y_time, tolerance = getOption("markExtra.newer.tolerance", 1)))) {
+  if (isTRUE(all.equal(
+    x_time,
+    y_time,
+    tolerance = getOption("markExtra.newer.tolerance", 1)
+  ))) {
     # check if the times are approx the same
     #
     # seem to get some differences in approximately the same:
@@ -37,7 +41,6 @@
 
 # Returns POSIXct
 new_as_time <- function(x, must_exist = FALSE) {
-
   if (length(x) != 1) {
     stop("x must be length of 1")
   }
@@ -50,7 +53,7 @@ new_as_time <- function(x, must_exist = FALSE) {
     stop("x must be a date/time or file path", call. = FALSE)
   }
 
-  if (isTRUE(must_exist) & !file.exists(x)) {
+  if (isTRUE(must_exist) && !file.exists(x)) {
     stop("File does not exist: ", x, call. = FALSE)
   }
 

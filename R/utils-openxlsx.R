@@ -2,8 +2,9 @@
 #'
 #' Add data to sheet
 #'
-#' A wrapper function to use within the openxlsx workbook building.
-#' This adds additional functionality to override within the function and provide an output that can be piped.
+#' A wrapper function to use within the openxlsx workbook building. This adds
+#' additional functionality to override within the function and provide an
+#' output that can be piped.
 #'
 #' @details These should be applied to a string starting with
 #'   [openxlsx::createWorkbook()] then piped through with the functions below.
@@ -22,14 +23,14 @@
 #' @export
 
 add_data_sheet <- function(
-  wb,
-  data,
-  sheetname,
-  tableStyle = "TableStyleLight8",
-  bandedRows = TRUE,
-  bandedCols = TRUE,
-  ...,
-  override = TRUE
+    wb,
+    data,
+    sheetname,
+    tableStyle = "TableStyleLight8", # nolint: object_name_linter.
+    bandedRows = TRUE, # nolint: object_name_linter.
+    bandedCols = TRUE, # nolint: object_name_linter.
+    ...,
+    override = TRUE
 ) {
   require_namespace("openxlsx")
 
@@ -38,7 +39,7 @@ add_data_sheet <- function(
   if (length(sns)) {
     snsl <- tolower(sns)
     sn_in <- snsl %in% tolower(sheetname)
-    if (override & any(sn_in)) {
+    if (override && any(sn_in)) {
       openxlsx::removeWorksheet(wb, sns[sn_in])
     }
   }
@@ -62,14 +63,13 @@ add_data_sheet <- function(
 #'
 #' @param wb A Workbook object to attach the new worksheet and table
 #' @param file An image file. Valid file types are: jpeg, png, bmp
-#' @param sheetname The worksheet to write to. Can be the worksheet index or name.
+#' @param sheetname The worksheet to write to. Can be the worksheet index or
+#'   name.
 #' @param ... Additional arguments passed to openxlsx::insertImage
 #' @param override Logical.  If TRUE, will delete the sheetname (if present)
 #'
 #' @export
-
-add_image_sheet <- function(wb, file, sheetname, ..., override = TRUE)
-{
+add_image_sheet <- function(wb, file, sheetname, ..., override = TRUE) {
   require_namespace("openxlsx")
 
   sns <- wb$sheet_names
@@ -77,7 +77,7 @@ add_image_sheet <- function(wb, file, sheetname, ..., override = TRUE)
   if (length(sns)) {
     snsl <- tolower(sns)
     sn_in <- snsl %in% tolower(sheetname)
-    if (override & any(sn_in)) {
+    if (override && any(sn_in)) {
       openxlsx::removeWorksheet(wb, sns[sn_in])
     }
   }

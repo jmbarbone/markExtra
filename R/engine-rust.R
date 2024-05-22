@@ -106,18 +106,18 @@ engine_rust <- function(options) {
     )
   } else {
     run_exe <- paste0("./", sub(".rs", "", file))
-    message('Running: ', paste0(basename(run_exe), ".exe"))
+    message("Running: ", paste0(basename(run_exe), ".exe"))
 
     tryCatch(
       system0(run_exe, env = env, timeout = timeout),
       error = function(e) {
         if (isFALSE(options$error)) stop(e)
-        'Error in executing rust code'
+        "Error in executing rust code"
       }
     )
   }
 
-  if (options$results == 'hide') {
+  if (options$results == "hide") {
     extra <- NULL
   }
 

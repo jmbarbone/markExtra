@@ -170,9 +170,11 @@ add_change_from_reference_wide <- function(
   m <- match(cols, cn, nomatch = NA_integer_)
   bad <- is.na(m)
   if (any(bad)) {
-    stop("Not all values in `cols` not found in column names \n",
+    stop(
+      "Not all values in `cols` not found in column names \n",
       cols[bad],
-      call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (!identical(m, m[seq(m)])) {
@@ -183,7 +185,7 @@ add_change_from_reference_wide <- function(
 
   for (i in cols) {
     cn <- colnames(.data)
-    # pos <- which(i == cn)
+    #> pos <- which(i == cn)
 
     ref_change <- .data[[i]] - .data[[point]]
     n <- ncol(.data)
@@ -198,20 +200,20 @@ add_change_from_reference_wide <- function(
       new_cols <- c(new_cols, n + 2)
     }
 
-    # data <- data[, c(1:pos, adds, unique((pos + 1):n))]
-    # new_cols <- c(new_cols, adds)
+    #> data <- data[, c(1:pos, adds, unique((pos + 1):n))]
+    #> new_cols <- c(new_cols, adds)
   }
 
 
-  if (collate & rearrange != "immediate") {
+  if (collate && rearrange != "immediate") {
     last <- new_cols[length(new_cols)]
     new_cols <- c(
       seq.int(new_cols[1], last, by = 2),
       seq.int(new_cols[2], last, by = 2)
     )
   }
-  # m <- 1:3
-  # new_cols <- 7:12
+  #> m <- 1:3
+  #> new_cols <- 7:12
   switch(
     rearrange,
     end = .data[, c(1:new_cols[1], new_cols[-1])],
@@ -221,10 +223,12 @@ add_change_from_reference_wide <- function(
         new_cols
       )), "integer"))
 
-      .data[, unique(c(1:new[1],
+      .data[, unique(c(
+        1:new[1],
         new[-1],
         max(m):(min(new_cols) - 1),
-        (max(new_cols) + 1):ncol(.data)))]
+        (max(new_cols) + 1):ncol(.data)
+      ))]
     },
     after = {
       end <- max(m)
@@ -252,9 +256,11 @@ find_reference <- function(reference, point) {
   m <- match(point, reference)
 
   if (length(m) > 1L) {
-    warning("Multiple references matched \n  ",
-      collapse0(m, sep = " & "),
-      "\n  Using first reference")
+    warning(
+      "Multiple references matched \n  ",
+      collapse(m, sep = " & "),
+      "\n  Using first reference"
+    )
     m <- m[1L]
   }
 

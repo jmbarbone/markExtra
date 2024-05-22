@@ -22,7 +22,13 @@ cache_time_env <- new.env()
 #' res
 #' @export
 
-cache <- function(name, expr, overwrite = FALSE, time = 3600, env = parent.frame()) {
+cache <- function(
+    name,
+    expr,
+    overwrite = FALSE,
+    time = 3600,
+    env = parent.frame()
+) {
   stopifnot(nzchar(name))
 
   if (!inherits(time, "POSIXt")) {
@@ -32,7 +38,7 @@ cache <- function(name, expr, overwrite = FALSE, time = 3600, env = parent.frame
   found <- get0(name, cache_env)
   expired <- isTRUE(get0(name, cache_time_env) < Sys.time())
 
-  if (overwrite | expired | is.null(found)) {
+  if (overwrite || expired || is.null(found)) {
     res <- force(expr)
     assign(name, res, cache_env)
     assign(name, time, cache_time_env)

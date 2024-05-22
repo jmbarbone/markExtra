@@ -10,10 +10,10 @@
 #' @returns `NULL`, invisible
 #' @export
 make_password <- function(n = 16L, specials = "!@#$%^&*_+-=?", silent = TRUE) {
-  chars <- c(letters, LETTERS, 0:9, chr_split(specials))
-  pass <- collapse0(sample(chars, n, replace = TRUE))
+  chars <- c(letters, LETTERS, 0:9, mark::chr_split(specials))
+  pass <- collapse(sample(chars, n, replace = TRUE))
   message("Copying to clipboard")
-  tryCatch(write_clipboard(pass), error = function(e) warning(e, call = FALSE))
+  try(mark::write_clipboard(pass))
   if (!silent) cat(pass, "\n")
   invisible(NULL)
 }

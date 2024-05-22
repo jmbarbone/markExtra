@@ -18,7 +18,8 @@ add_mahalanobis(
 
 \item{...}{Columns to select}
 
-\item{.inverted}{Logical. If TRUE, covariance matrix (p x p) of the distribution is supposed to contain the inverse of the covariance matrix.}
+\item{.inverted}{Logical. If TRUE, covariance matrix (p x p) of the
+distribution is supposed to contain the inverse of the covariance matrix.}
 
 \item{.name}{The name of the new column for the distance value}
 

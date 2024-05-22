@@ -38,8 +38,9 @@ not already listed}
 Add data to sheet
 }
 \details{
-A wrapper function to use within the openxlsx workbook building.
-This adds additional functionality to override within the function and provide an output that can be piped.
+A wrapper function to use within the openxlsx workbook building. This adds
+additional functionality to override within the function and provide an
+output that can be piped.
 
 These should be applied to a string starting with
   [openxlsx::createWorkbook()] then piped through with the functions below.
