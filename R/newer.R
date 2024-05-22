@@ -21,9 +21,9 @@
   }
 
   if (isTRUE(all.equal(
-      x_time,
-      y_time,
-      tolerance = getOption("markExtra.newer.tolerance", 1)
+    x_time,
+    y_time,
+    tolerance = getOption("markExtra.newer.tolerance", 1)
   ))) {
     # check if the times are approx the same
     #
@@ -41,7 +41,6 @@
 
 # Returns POSIXct
 new_as_time <- function(x, must_exist = FALSE) {
-
   if (length(x) != 1) {
     stop("x must be length of 1")
   }
