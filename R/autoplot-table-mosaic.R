@@ -8,10 +8,10 @@
 #' @returns a `ggplot2` object
 #' @export
 autoplot_table_mosaic <- function(x) {
-  mark::require_namespace("rlang")
-  mark::require_namespace("ggmosaic")
-  mark::require_namespace("ggplot2")
-  mark::require_namespace("psych")
+  require_namespace("rlang")
+  require_namespace("ggmosaic")
+  require_namespace("ggplot2")
+  require_namespace("psych")
 
   d <- dim(x)
   stopifnot(

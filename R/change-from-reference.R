@@ -253,7 +253,7 @@ find_reference <- function(reference, point) {
 
   if (length(m) > 1L) {
     warning("Multiple references matched \n  ",
-      collapse0(m, sep = " & "),
+      collapse(m, sep = " & "),
       "\n  Using first reference")
     m <- m[1L]
   }

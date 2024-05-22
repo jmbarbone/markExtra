@@ -16,8 +16,8 @@ LazyData: true
 Depends:
     R (>= 3.6)
 Imports:
-    fuj,
-    mark (>= 0.1.1),
+    fuj (>= 0.2.1),
+    mark (>= 0.7.0),
     methods,
     stats
 Suggests:
@@ -39,9 +39,7 @@ Suggests:
     xfun
 Remotes:
     github::jmbarbone/AlignAssign@tilde,
-    github::jmbarbone/spelling@45-alnumeric-hyphenated,
-    github::jmbarbone/mark@HEAD
-RoxygenNote: 7.2.3
+    github::jmbarbone/spelling@45-alnumeric-hyphenated
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 VignetteBuilder: knitr

@@ -15,7 +15,7 @@ test_git_repo <- function(x, ..., branch = "master", test_fun = devtools::test, 
   on.exit(options(op), add = TRUE)
   options(options)
 
-  x <- norm_path(x, check = TRUE)
+  x <- mark::norm_path(x, check = TRUE)
 
   if (!has_git(x)) {
     stop("N git directory detected")
