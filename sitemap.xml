@@ -1,111 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/404.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/add_data_sheet.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/add_euclidean.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/add_image_sheet.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/add_mahalanobis.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/assigns.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/autoplot_table_mosaic.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/cache.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/coef_equation.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/default_env.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/effect_sizes.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/engine_rust.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/filter_combine.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/fishers_method.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/grapes-newer-grapes.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/iqrs.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/make_password.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/markExtra-package.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/min_max.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/pROC_optimal_threshold.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/pROC_quick_plot.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/p_values.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/percentile_rank.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/reference_change.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/reverse_log_trans.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/sd_pooled.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/sterr.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/test_git_repo.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/tukey_coef.html</loc>
-  </url>
-  <url>
-    <loc>https://jmbarbone.github.io/markExtra/reference/z_score.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jmbarbone.github.io/markExtra/404.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/LICENSE-text.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/LICENSE.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/authors.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/index.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/news/index.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/add_data_sheet.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/add_euclidean.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/add_image_sheet.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/add_mahalanobis.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/assigns.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/autoplot_table_mosaic.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/cache.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/coef_equation.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/default_env.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/effect_sizes.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/engine_rust.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/filter_combine.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/fishers_method.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/grapes-newer-grapes.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/index.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/iqrs.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/make_password.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/markExtra-package.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/min_max.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/pROC_optimal_threshold.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/pROC_quick_plot.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/p_values.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/percentile_rank.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/reference_change.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/reverse_log_trans.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/sd_pooled.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/sterr.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/test_git_repo.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/tukey_coef.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/weighted_score.html</loc></url>
+<url><loc>https://jmbarbone.github.io/markExtra/reference/z_score.html</loc></url>
 </urlset>
+
