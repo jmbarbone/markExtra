@@ -1,3 +1,7 @@
+# markExtra 0.1.3
+
+* adds `weighted_score()`
+
 # markExtra 0.1.2
 
 * corrects issue with `autoplot_table_mosaic()` [(#6)](github.com/jmbarbone/markExtra/issues/6)
