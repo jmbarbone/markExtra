@@ -12,11 +12,11 @@
 #' mod <- pROC::roc(x$outcome, x$s100b, levels=c("Good", "Poor"))
 #'
 #' pROC_optimal_threshold(mod)
-
+# nolint next: object_name_linter.
 pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
   require_namespace("pROC")
   stopifnot(inherits(mod, "roc"))
-  method <- match_arg(method)
+  method <- mark::match_arg(method)
 
   cis <- pROC::ci.thresholds(mod, ...)
   w <- switch(
@@ -104,12 +104,18 @@ subset_rownames <- function(x, y) {
 #'   pROC_quick_plot(mod, boots = 100)
 #' }
 #' }
-
-pROC_quick_plot <- function(mod, thres_method = c("youden", "closest.topleft"), col = "blue", ..., boots = 0L) {
+# nolint next: object_name_linter.
+pROC_quick_plot <- function(
+    mod,
+    thres_method = c("youden", "closest.topleft"),
+    col = "blue",
+    ...,
+    boots = 0L
+) {
   require_namespace("pROC")
   stopifnot(inherits(mod, "roc"))
 
-  thres_method <- match_arg(thres_method)
+  thres_method <- mark::match_arg(thres_method)
 
   pROC::plot.roc(
     mod,
@@ -145,13 +151,19 @@ pROC_quick_plot <- function(mod, thres_method = c("youden", "closest.topleft"), 
 # Replaces pROC ::: ci.sp.roc
 # pROC function is slow; uses plyr functions and has some slower applications
 #   of base functions
-pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0.95) {
+# nolint next: object_name_linter.
+pROC_ci_sp_roc <- function(
+    mod,
+    boots = 500,
+    se = seq(0, 1, .01),
+    conf_level = 0.95
+) {
   require_namespace("future")
   require_namespace("furrr")
   require_namespace("dplyr")
 
   # Maintain same warnings
-  if (conf_level > 1 | conf_level < 0) {
+  if (conf_level > 1 || conf_level < 0) {
     stop("'conf_level' must be within the interval [0,1].", call. = FALSE)
   }
 
@@ -163,12 +175,8 @@ pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0
     )
   }
 
-  # Use of furrr makes bootstrapping much, much quicker
-  if (fuj::is_windows()) {
-    future::plan(future::multiprocess)
-  } else {
-    future::plan(future::multisession)
-  }
+  fplan <- future::plan(future::multisession)
+  on.exit(future::plan(fplan))
 
   perfs <- furrr::future_map(
     seq(boots),
@@ -176,9 +184,6 @@ pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0
     roc = mod,
     se = se
   )
-
-  # Set back to default
-  future::plan(future::sequential)
 
   perfs <- as.data.frame(Reduce(rbind, perfs))
 
@@ -197,7 +202,7 @@ pROC_ci_sp_roc <- function(mod, boots = 500, se = seq(0, 1, .01), conf_level = 0
   structure(
     ci,
     # Default Doesn't use percentage
-    # rownames = paste0(sensitivities, ifelse(roc$percent, "%", "")),
+    #> rownames = paste0(sensitivities, ifelse(roc$percent, "%", "")),
     rownames = se,
     con.level = conf_level,
     boot.n = boots,

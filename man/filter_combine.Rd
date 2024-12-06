@@ -19,8 +19,9 @@ group by for just this operation, functioning as an alternative to \code{\link[d
 details and examples, see \link[dplyr:dplyr_by]{?dplyr_by}.}
   }}
 
-\item{.id}{When .id is supplied, a new column of identifiers is created to link each row to its original data frame.
-The labels are taken from `.names`}
+\item{.id}{When .id is supplied, a new column of identifiers is created to
+link each row to its original data frame. The labels are taken from
+`.names`}
 
 \item{.names}{vector of characters for the}
 }

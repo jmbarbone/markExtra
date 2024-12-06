@@ -11,8 +11,8 @@ reverse_log_trans(base = exp(1))
     logarithms are computed.  Defaults to \eqn{e}=\code{exp(1)}.}
 }
 \description{
-Show a reversed order for a log transformed scale from ggplot.
-Ripped from: https://stackoverflow.com/questions/11053899/how-to-get-a-reversed-log10-scale-in-ggplot2
+Show a reversed order for a log transformed scale from ggplot. Ripped from:
+https://stackoverflow.com/questions/11053899/how-to-get-a-reversed-log10-scale-in-ggplot2
 }
 \author{
 Brian Diggs (https://stackoverflow.com/users/892313/brian-diggs)

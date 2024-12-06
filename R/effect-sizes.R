@@ -14,7 +14,7 @@ tukey_coef <- function(x) {
   stopifnot(is.numeric(x))
   q1 <- stats::quantile(x, .25, names = FALSE, na.rm = TRUE)
   q3 <- stats::quantile(x, .75, names = FALSE, na.rm = TRUE)
-  iqr <- q3 - q1
+  iqr <- q3 - q1 # nolint: object_usage_linter. False positive for iqr
 
   # TODO maybe don't use case_when?
   dplyr::case_when(
@@ -33,7 +33,7 @@ tukey_coef <- function(x) {
 #' @param na.rm Logical
 #'
 #' @export
-
+# nolint next: object_name_linter.
 z_score <- function(x, na.rm = FALSE) {
   (x - mean(x, na.rm = na.rm)) / stats::sd(x, na.rm = na.rm)
 }
@@ -66,17 +66,16 @@ z_score <- function(x, na.rm = FALSE) {
 #'
 #' @rdname effect_sizes
 #' @export
-
-odds_ratio <- function(a, b = NULL, c = NULL, d = NULL, type = "hits_misses")
-{
-  if (length(a) == 4 & is.null(b) & is.null(c) & is.null(d)) {
+# nolint next: cyclocomp_linter.
+odds_ratio <- function(a, b = NULL, c = NULL, d = NULL, type = "hits_misses") {
+  if (length(a) == 4 && is.null(b) && is.null(c) && is.null(d)) {
     d <- a[4]
     c <- a[3]
     b <- a[2]
     a <- a[1]
   }
 
-  if (a < 0 | b < 0 | c < 0 | d < 0) {
+  if (a < 0 || b < 0 || c < 0 || d < 0) {
     stop("Cells cannot have negative numbers", call. = FALSE)
   }
 
@@ -85,11 +84,11 @@ odds_ratio <- function(a, b = NULL, c = NULL, d = NULL, type = "hits_misses")
     d <- d - b
   }
 
-  if ((b == 0) | (c == 0))  {
+  if ((b == 0) || (c == 0))  {
     return(NaN)
   }
 
-  if (a < 5 | b < 5 | c < 5 | d < 5) {
+  if (a < 5 || b < 5 || c < 5 || d < 5) {
     warning("Cells should all have at least 5 observations",
             call. = FALSE)
   }

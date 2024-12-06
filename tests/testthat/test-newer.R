@@ -13,6 +13,7 @@ test_that("%newer% works", {
   t2 <- file.mtime(f2)
   t3 <- file.mtime(f3)
 
+  # nolint start: spaces_inside_linter.
   expect_false(f1 %newer% t1)
   expect_false(f2 %newer% t2)
   expect_false(f3 %newer% t3)
@@ -22,6 +23,7 @@ test_that("%newer% works", {
   expect_true( f3 %newer% f2)
   expect_true( f3 %newer% f1)
   expect_true( f1 %newer% tempfile())
+  # nolint end: spaces_inside_linter.
 
   expect_error(tempfile() %newer% f1, "exist")
 

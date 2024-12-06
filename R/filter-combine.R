@@ -4,8 +4,9 @@
 #'
 #' @param x A data.frame
 #' @inheritDotParams dplyr::filter -.data -.preserve
-#' @param .id When .id is supplied, a new column of identifiers is created to link each row to its original data frame.
-#' The labels are taken from `.names`
+#' @param .id When .id is supplied, a new column of identifiers is created to
+#'   link each row to its original data frame. The labels are taken from
+#'   `.names`
 #' @param .names vector of characters for the
 #'
 #' @export

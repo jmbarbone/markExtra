@@ -1,7 +1,7 @@
 Package: markExtra
 Type: Package
 Title: Extra Functions for the mark Package
-Version: 0.1.0.9001
+Version: 0.1.3
 Authors@R:
     person(given   = "Jordan Mark",
            family  = "Barbone",
@@ -16,8 +16,8 @@ LazyData: true
 Depends:
     R (>= 3.6)
 Imports:
-    fuj,
-    mark (>= 0.1.1),
+    fuj (>= 0.2.1),
+    mark (>= 0.7.0),
     methods,
     stats
 Suggests:
@@ -40,8 +40,8 @@ Suggests:
     xfun
 Remotes:
     github::jmbarbone/AlignAssign@tilde,
-    github::jmbarbone/spelling@45-alnumeric-hyphenated,
-RoxygenNote: 7.2.3
+    github::jmbarbone/spelling@45-alnumeric-hyphenated
+RoxygenNote: 7.3.2
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 VignetteBuilder: knitr

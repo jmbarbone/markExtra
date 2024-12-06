@@ -13,7 +13,8 @@ min_max(x, lower = 0, upper = 1)
 and `1`, respectively.  `upper` must be greater than `lower`.}
 }
 \value{
-A vector of x normalizes so the lower scores is `lower` and highest score is `upper`
+A vector of x normalizes so the lower scores is `lower` and highest
+  score is `upper`
 }
 \description{
 Min-max normalization

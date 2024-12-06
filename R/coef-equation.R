@@ -11,17 +11,19 @@
 #' coef_equation(mod)
 #' # "2.2 + Sepal.Width \* 0.60 + Petal.Length \* 0.47"
 #' @export
-
+# nolint next: object_name_linter.
 coef_equation <- function(mod, FUN = sf2, ...) {
   UseMethod("coef_equation", mod)
 }
 
 #' @export
+# nolint next: object_name_linter.
 coef_equation.default <- function(mod, FUN = sf2, ...) {
   stop("There is no method for class: ", class(mod), call. = FALSE)
 }
 
 #' @export
+# nolint next: object_name_linter.
 coef_equation.lm <- function(mod, FUN = sf2, ...) {
   values <- stats::coef(mod)
   nm <- names(values)

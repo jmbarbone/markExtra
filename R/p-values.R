@@ -33,26 +33,29 @@ p_round <- function(x, n = 3, sig = n) {
   out[nans] <- "(NaN)"
 
   if (valid_n) {
-    out[!nans & below] <- sprintf("<.%s1", paste(rep("0", n - 1), collapse = ""))
+    out[!nans & below] <- sprintf(
+      "<.%s1",
+      paste(rep("0", n - 1), collapse = "")
+    )
   }
 
   empty <- out == ""
-  out[empty] <- vap_chr(x[empty], format, digits = sig, nsmall = sig, scientific = FALSE)
+  out[empty] <- vap_chr(
+    x[empty],
+    format,
+    digits = sig,
+    nsmall = sig,
+    scientific = FALSE
+  )
   out
 }
 
 #' @rdname p_values
 #' @export
 p_value_sig <- function(
-  x,
-  cutoffs = c(
-    "***" = 0.001,
-    "**"  = 0.01,
-    "*"   = 0.05,
-    "."   = 0.10
-  )
-)
-{
+    x,
+    cutoffs = c("***" = 0.001, "**" = 0.01, "*" = 0.05, "." = 0.10)
+) {
   cutoffs <- sort(cutoffs, decreasing = FALSE)
   cutoffs <- append(cutoffs, c(" " = 1))
   nm <- names(cutoffs)

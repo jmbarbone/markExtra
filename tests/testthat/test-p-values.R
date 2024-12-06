@@ -13,4 +13,3 @@ test_that("below threshold", {
   res <- c("0.0001", "0.0001", "<.0001", "<.0001")
   expect_equal(p_round(x, n = 4), res)
 })
-
