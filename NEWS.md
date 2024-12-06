@@ -1,10 +1,13 @@
+# markExtra (development version)
+
+* adds `passcode()` for generating fun passcodes
+
 # markExtra 0.1.3
 
 * adds `weighted_score()`
 
 # markExtra 0.1.2
 
-* adds `passcode()` for generating fun passcodes
 * corrects issue with `autoplot_table_mosaic()` [(#6)](github.com/jmbarbone/markExtra/issues/6)
 * adds experimental `cache()`
 * adds `autoplot_table_mosaic()` for making mosaic plots from tables
