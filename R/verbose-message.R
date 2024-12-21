@@ -1,7 +1,7 @@
-verboseMessage <- function(..., call. = NULL) {
+verbose_message <- function(..., call = NULL) {
   cond <- structure(
-    list(message = .makeMessage(..., appendLF = TRUE), call = call.),
-    class = c("verboseMessage", "message", "condition")
+    list(message = .makeMessage(..., appendLF = TRUE), call = call),
+    class = c("verbose_message", "message", "condition")
   )
 
   if (getOption("verbose")) {
