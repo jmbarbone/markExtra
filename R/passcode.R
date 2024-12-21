@@ -32,8 +32,8 @@ passcode <- function(
   on.exit(if (reset_fail) passcode_env$reset(), add = TRUE)
 
   restart <- function() {
-    e <- sys.call(-1)
-    p <- parent.frame(3)
+    e <- sys.call(-1L)
+    p <- parent.frame(3L)
     passcode_env$fail()
 
     if (passcode_env$failures > 100L) {
@@ -41,10 +41,10 @@ passcode <- function(
       stop("Too many failures")
     }
 
-    verboseMessage(
+    verbose_message(
       "restarting passcode() due to failure ... ",
       passcode_env$failures,
-      call. = e
+      call = e
     )
     eval(e, p)
   }
@@ -58,7 +58,7 @@ passcode <- function(
   nbase <- len - numbers - nchar(sep)
 
   numbers <- as.integer(numbers)
-  if (numbers >= 1) {
+  if (numbers >= 1L) {
     nums <- sample.int(10L^numbers - 1L, 1L)
     nums <- formatC(nums, format = "fg", width = numbers, flag = "0")
   } else {
