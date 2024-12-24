@@ -1,3 +1,7 @@
+# markExtra (development version)
+
+* adds `passcode()` for generating fun passcodes
+
 # markExtra 0.1.3
 
 * adds `weighted_score()`
