@@ -20,6 +20,7 @@ passcode_env$reset <- function() {
 #' @param one,two Type of words to use (see `?codename::codename` for `type`)
 #' @param numbers Number of digits to append
 #' @return A passcode, as a string
+#' @export
 passcode <- function(
     len = 14:16,
     sep = "_",
