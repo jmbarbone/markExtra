@@ -1,6 +1,6 @@
 # markExtra (development version)
 
-* adds `passcode()` for generating fun passcodes
+* adds `passcode()` for generating fun, easy to remember passcodes
 
 # markExtra 0.1.3
 

@@ -66,7 +66,6 @@ z_score <- function(x, na.rm = FALSE) {
 #'
 #' @rdname effect_sizes
 #' @export
-# nolint next: cyclocomp_linter.
 odds_ratio <- function(a, b = NULL, c = NULL, d = NULL, type = "hits_misses") {
   if (length(a) == 4 && is.null(b) && is.null(c) && is.null(d)) {
     d <- a[4]
