@@ -1,4 +1,5 @@
 test_that("Add worksheets", {
+  skip_if_not_installed("openxlsx")
   wb <- openxlsx::createWorkbook()
   expect_error(add_data_sheet(wb, iris, "one", override = FALSE), NA)
 
