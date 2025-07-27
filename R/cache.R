@@ -35,15 +35,14 @@ cache <- function(
     time <- Sys.time() + time
   }
 
-  found <- get0(name, cache_env)
-  expired <- isTRUE(get0(name, cache_time_env) < Sys.time())
+  found <- exists(name, cache_env)
 
-  if (overwrite || expired || is.null(found)) {
+  if (overwrite || !found || isTRUE(get0(name, cache_time_env) < Sys.time())) {
     res <- force(expr)
     assign(name, res, cache_env)
     assign(name, time, cache_time_env)
   } else {
-    res <- found
+    res <- get(name, cache_env)
   }
 
   assign(name, res, env)
