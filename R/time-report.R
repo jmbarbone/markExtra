@@ -160,6 +160,7 @@ simpleTimeReport <- function(
 #' @param threshold A threshold for reporting the difference, if `stop - start`
 #'   is less than this, a empty character vector (`""`) is returned
 #' @noRd
+# nolint next: object_name_linter.
 formatTimeDiff <- function(start, stop = Sys.time(), threshold = .1) {
   # nolint: object_name_linter, line_length_linter.
   difference <- stop - start
