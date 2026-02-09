@@ -7,7 +7,7 @@
 #' @param ... Additional arguments passed to [pROC::ci.thresholds()]
 #' @export
 #'
-#' @examples
+#' @examplesIf mark::package_available("pROC")
 #' x <- pROC::aSAH
 #' mod <- pROC::roc(x$outcome, x$s100b, levels=c("Good", "Poor"))
 #'
@@ -46,7 +46,6 @@ pROC_optimal_threshold <- function(mod, method = c("youden", "top_left"), ...) {
     ci_sp = ci_sp,
     ci_se = ci_se
   )
-
 }
 
 #' @export
@@ -56,6 +55,7 @@ print.mark_roc_thres <- function(x, ...) {
   se <- round(a$ci_se, dig)
   sp <- round(a$ci_sp, dig)
 
+  # fmt: skip
   out <- paste0(
     a$method, ": ", x, "\n",
     "Sensitivity = ", se[2], " (95% CI ", se[1], " - ", se[3], ")\n",
@@ -106,11 +106,11 @@ subset_rownames <- function(x, y) {
 #' }
 # nolint next: object_name_linter.
 pROC_quick_plot <- function(
-    mod,
-    thres_method = c("youden", "closest.topleft"),
-    col = "blue",
-    ...,
-    boots = 0L
+  mod,
+  thres_method = c("youden", "closest.topleft"),
+  col = "blue",
+  ...,
+  boots = 0L
 ) {
   require_namespace("pROC")
   stopifnot(inherits(mod, "roc"))
@@ -153,10 +153,10 @@ pROC_quick_plot <- function(
 #   of base functions
 # nolint next: object_name_linter.
 pROC_ci_sp_roc <- function(
-    mod,
-    boots = 500,
-    se = seq(0, 1, .01),
-    conf_level = 0.95
+  mod,
+  boots = 500,
+  se = seq(0, 1, .01),
+  conf_level = 0.95
 ) {
   require_namespace("future")
   require_namespace("furrr")

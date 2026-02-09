@@ -17,8 +17,10 @@ pROC_optimal_threshold(mod, method = c("youden", "top_left"), ...)
 Find the optimal threshold from a pROC mod
 }
 \examples{
+\dontshow{if (mark::package_available("pROC")) withAutoprint(\{ # examplesIf}
 x <- pROC::aSAH
 mod <- pROC::roc(x$outcome, x$s100b, levels=c("Good", "Poor"))
 
 pROC_optimal_threshold(mod)
+\dontshow{\}) # examplesIf}
 }
