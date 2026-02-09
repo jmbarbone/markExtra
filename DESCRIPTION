@@ -22,6 +22,7 @@ Imports:
     stats
 Suggests:
     codename,
+    crayon,
     devtools,
     dplyr,
     furrr,
