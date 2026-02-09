@@ -41,7 +41,8 @@ Suggests:
     xfun
 Remotes:
     github::jmbarbone/AlignAssign@tilde,
-    github::jmbarbone/spelling@45-alnumeric-hyphenated
+    github::jmbarbone/spelling@45-alnumeric-hyphenated,
+    github::haleyjeppson/ggmosaic
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
 Config/testthat/parallel: false
