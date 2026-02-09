@@ -1,6 +1,7 @@
 # markExtra (development version)
 
 * adds `passcode()` for generating fun, easy to remember passcodes
+* adds `array_extract()` and `simpleTimeReport()` from [`{mark}`](https://github.com/jmbarbone/mark)
 
 # markExtra 0.1.3
 
