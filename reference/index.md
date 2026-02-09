@@ -1,0 +1,82 @@
+# Package index
+
+## All functions
+
+- [`add_data_sheet()`](https://jmbarbone.github.io/markExtra/reference/add_data_sheet.md)
+  : Wrappers for openxlsx package functions
+- [`add_euclidean()`](https://jmbarbone.github.io/markExtra/reference/add_euclidean.md)
+  : Add Euclidean distance
+- [`add_image_sheet()`](https://jmbarbone.github.io/markExtra/reference/add_image_sheet.md)
+  : Add image to sheet
+- [`add_mahalanobis()`](https://jmbarbone.github.io/markExtra/reference/add_mahalanobis.md)
+  : Add Mahalanobis distance
+- [`array_extract()`](https://jmbarbone.github.io/markExtra/reference/array_extract.md)
+  : Array extract
+- [`` `%=+%` ``](https://jmbarbone.github.io/markExtra/reference/assigns.md)
+  [`` `%=-%` ``](https://jmbarbone.github.io/markExtra/reference/assigns.md)
+  : Assign add
+- [`autoplot_table_mosaic()`](https://jmbarbone.github.io/markExtra/reference/autoplot_table_mosaic.md)
+  : Autoplot table mosaic
+- [`cache()`](https://jmbarbone.github.io/markExtra/reference/cache.md)
+  : cache an object
+- [`coef_equation()`](https://jmbarbone.github.io/markExtra/reference/coef_equation.md)
+  : Print a model as an equation
+- [`default_env()`](https://jmbarbone.github.io/markExtra/reference/default_env.md)
+  : Default environment
+- [`odds_ratio()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  [`odds2d()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  [`odds2r()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  [`r2cohend()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  [`cohend2r()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  [`cohend2odds()`](https://jmbarbone.github.io/markExtra/reference/effect_sizes.md)
+  : Effect sizes conversions
+- [`engine_rust()`](https://jmbarbone.github.io/markExtra/reference/engine_rust.md)
+  [`set_rust_engine()`](https://jmbarbone.github.io/markExtra/reference/engine_rust.md)
+  : Engine - Rust
+- [`filter_combine()`](https://jmbarbone.github.io/markExtra/reference/filter_combine.md)
+  : Filter combine
+- [`fishers_method()`](https://jmbarbone.github.io/markExtra/reference/fishers_method.md)
+  : Fisher's method for combined probabilities
+- [`` `%newer%` ``](https://jmbarbone.github.io/markExtra/reference/grapes-newer-grapes.md)
+  : Is newer
+- [`iqrs()`](https://jmbarbone.github.io/markExtra/reference/iqrs.md) :
+  Inter Quartile Ranges
+- [`make_password()`](https://jmbarbone.github.io/markExtra/reference/make_password.md)
+  : Generate a random password
+- [`min_max()`](https://jmbarbone.github.io/markExtra/reference/min_max.md)
+  : Min-max normalization
+- [`pROC_optimal_threshold()`](https://jmbarbone.github.io/markExtra/reference/pROC_optimal_threshold.md)
+  : Optimal threshold from pROC mod
+- [`pROC_quick_plot()`](https://jmbarbone.github.io/markExtra/reference/pROC_quick_plot.md)
+  : Plots an ROC model
+- [`p_round()`](https://jmbarbone.github.io/markExtra/reference/p_values.md)
+  [`p_value_sig()`](https://jmbarbone.github.io/markExtra/reference/p_values.md)
+  : Round p-value
+- [`passcode()`](https://jmbarbone.github.io/markExtra/reference/passcode.md)
+  : passcode
+- [`percentile_rank()`](https://jmbarbone.github.io/markExtra/reference/percentile_rank.md)
+  : Percentile rank
+- [`change_from_reference()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`pchange_from_reference()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`prop_from_reference()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`get_reference_value()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`add_change_from_reference()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`add_pchange_from_reference()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  [`add_change_from_reference_wide()`](https://jmbarbone.github.io/markExtra/reference/reference_change.md)
+  : Calculate change from a visit
+- [`reverse_log_trans()`](https://jmbarbone.github.io/markExtra/reference/reverse_log_trans.md)
+  : Reverse log transformation for ggplot
+- [`sd_pooled()`](https://jmbarbone.github.io/markExtra/reference/sd_pooled.md)
+  : Pooled standard deviation
+- [`simpleTimeReport()`](https://jmbarbone.github.io/markExtra/reference/simpleTimeReport.md)
+  : Time reports
+- [`sterr()`](https://jmbarbone.github.io/markExtra/reference/sterr.md)
+  : Standard error
+- [`test_git_repo()`](https://jmbarbone.github.io/markExtra/reference/test_git_repo.md)
+  : Test a git repository
+- [`tukey_coef()`](https://jmbarbone.github.io/markExtra/reference/tukey_coef.md)
+  : Tukey's coefficient
+- [`weighted_score()`](https://jmbarbone.github.io/markExtra/reference/weighted_score.md)
+  : Weighted score
+- [`z_score()`](https://jmbarbone.github.io/markExtra/reference/z_score.md)
+  : Z-score
